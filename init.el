@@ -53,11 +53,17 @@
       indent-tabs-mode t)
 (setq-default tab-width 4)
 
-;; Use leuven theme.
-(load-theme 'leuven t)
+;; Don't indent a level within a C++ namespace.
+(defun my-cc-setup ()
+  (c-set-offset 'innamespace 0))
+(add-hook 'c++-mode-hook 'my-cc-setup)
+
+;; Use Tao light theme.
+(use-package tao-theme)
+(load-theme 'tao-yang t)
 
 ;; Set default font.
-(set-face-attribute 'default nil :font "Deja Vu Sans Mono-11")
+(set-face-attribute 'default nil :font "Deja Vu Sans Mono-13")
 
 ;; Sort apropos results by relevance.
 (setq apropos-sort-by-scores t)
@@ -76,3 +82,9 @@
 
 ;; Use hippie-expand over dabbrev expansion.
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
+
+;; Follow compilation output.
+(setq compilation-scroll-output t)
+
+;; Delete trailing whitespace on save.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
