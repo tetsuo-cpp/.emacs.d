@@ -1,7 +1,7 @@
 (setq package-enable-at-startup nil) (package-initialize)
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")))
+      '(("melpa" . "http://melpa.org/packages/")
+        ("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; Install use-package if not already there.
 (unless (package-installed-p 'use-package)
@@ -32,6 +32,11 @@
 ;; Project navigation.
 (use-package projectile)
 (projectile-global-mode)
+
+;; YASnippet.
+(use-package yasnippet)
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;; Enable ido mode for file and buffer switching.
 (ido-mode 1)
