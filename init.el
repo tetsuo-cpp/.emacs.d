@@ -63,6 +63,9 @@
   (c-set-offset 'innamespace 0))
 (add-hook 'c++-mode-hook 'my-cc-setup)
 
+;; Open .h files in C++ mode by default.
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; Use Tao light theme.
 (use-package tao-theme)
 (load-theme 'tao-yang t)
