@@ -66,9 +66,9 @@
 ;; Open .h files in C++ mode by default.
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; Use Tao light theme.
-(use-package tao-theme)
-(load-theme 'tao-yang t)
+;; Use Moe dark theme.
+(use-package moe-theme)
+(load-theme 'moe-dark t)
 
 ;; Set default font.
 (set-face-attribute 'default nil :font "Deja Vu Sans Mono-13")
@@ -96,3 +96,10 @@
 
 ;; Delete trailing whitespace on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Customize cursor.
+(setq-default cursor-type 'bar)
+(global-hl-line-mode t)
+
+;; Disable line wrapping.
+(setq-default truncate-lines t)
