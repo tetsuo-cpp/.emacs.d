@@ -1,7 +1,8 @@
-(setq package-enable-at-startup nil) (package-initialize)
+(require 'package)
+(setq package-enable-at-startup nil)
 (setq package-archives
-      '(("melpa" . "http://melpa.org/packages/")
-        ("gnu" . "http://elpa.gnu.org/packages/")))
+      '(("melpa" . "http://melpa.org/packages/")))
+(package-initialize)
 
 ;; Install use-package if not already there.
 (unless (package-installed-p 'use-package)
@@ -13,62 +14,86 @@
 (setq use-package-always-ensure t)
 
 ;; Helm completion framework.
-(use-package helm)
-(require 'helm-config)
+(use-package helm
+  :config
+  (require 'helm-config))
 
 ;; Display what is bound to each key.
-(use-package which-key)
-(which-key-mode)
+(use-package which-key
+  :config
+  (which-key-mode))
 
 ;; Bracket completion.
-(use-package smartparens)
-(require 'smartparens-config)
-(smartparens-global-mode t)
+(use-package smartparens
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode t))
 
 ;; Indent with tabs and align with spaces.
-(use-package smart-tabs-mode)
-(smart-tabs-insinuate 'c 'c++)
+(use-package smart-tabs-mode
+  :config
+  (smart-tabs-insinuate 'c++))
 
 ;; Project navigation.
-(use-package projectile)
-(projectile-global-mode)
+(use-package projectile
+  :init
+  (setq projectile-completion-system 'helm)
+  (setq projectile-use-git-grep t)
+  (setq projectile-enable-caching t)
+  :config
+  (projectile-global-mode))
+
+(use-package helm-projectile
+  :config
+  (helm-projectile-on))
 
 ;; YASnippet.
-(use-package yasnippet)
-(require 'yasnippet)
-(yas-global-mode 1)
+(use-package yasnippet
+  :config
+  (yas-global-mode t))
+
+(use-package clang-format
+  :config
+  (defun clang-format-buffer-smart ()
+    "Reformat buffer if .clang-format exists in the projectile root."
+    (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
+      (clang-format-buffer)))
+  (add-hook 'before-save-hook 'clang-format-buffer-smart))
 
 ;; Enable ido mode for file and buffer switching.
-(ido-mode 1)
+(ido-mode t)
 (setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
 
 ;; Allow remote editing.
-(require 'tramp)
-
-;; Pick up environmental variables and aliases on the remote machine.
-(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+(use-package tramp
+  :config
+  ;; Pick up environment vars and aliases on remote host.
+  (setq tramp-remote-path (cons 'tramp-own-remote-path tramp-remote-path)))
 
 ;; Enhanced directory traversal.
 (require 'dired-x)
 
-;; Fix indentation.
-(setq c-default-style "linux"
-      c-basic-offset 4
-      indent-tabs-mode t)
-(setq-default tab-width 4)
-
-;; Don't indent a level within a C++ namespace.
-(defun my-cc-setup ()
-  (c-set-offset 'innamespace 0))
-(add-hook 'c++-mode-hook 'my-cc-setup)
+;; Indentation.
+(defun optiver-cpp-setup ()
+  (setq c-default-style "linux"
+        c-basic-offset 4
+        tab-width 4)
+  (c-set-offset 'innamespace 0)
+  (c-set-offset 'substatement-open 0)
+  (c-set-offset 'inline-open 0))
+(add-hook 'c++-mode-hook 'optiver-cpp-setup)
 
 ;; Open .h files in C++ mode by default.
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; Use Moe dark theme.
-(use-package moe-theme)
-(load-theme 'moe-dark t)
+(use-package moe-theme
+  :init
+  (setq moe-theme-highlight-buffer-id nil)
+  :config
+  (load-theme 'moe-dark t)
+  (moe-theme-set-color 'magenta))
 
 ;; Set default font.
 (set-face-attribute 'default nil :font "Deja Vu Sans Mono-13")
@@ -88,9 +113,6 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; Use hippie-expand over dabbrev expansion.
-(global-set-key [remap dabbrev-expand] 'hippie-expand)
-
 ;; Follow compilation output.
 (setq compilation-scroll-output t)
 
@@ -98,8 +120,18 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Customize cursor.
-(setq-default cursor-type 'bar)
+(setq cursor-type 'box)
+(set-cursor-color "magenta")
+(blink-cursor-mode 0)
 (global-hl-line-mode t)
 
 ;; Disable line wrapping.
-(setq-default truncate-lines t)
+(setq truncate-lines nil)
+
+;; Disable scroll bar.
+(scroll-bar-mode -1)
+
+;; Make DAbbrev ignore case when searching for expansions.
+;; But copy the expansion verbatim.
+(setq dabbrev-case-fold-search t)
+(setq dabbrev-case-replace nil)
