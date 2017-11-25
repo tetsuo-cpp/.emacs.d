@@ -3,7 +3,5 @@
 # key: case
 # --
 case ${1:constexpr}:
-{
     $0
     break;
-}

@@ -49,6 +49,9 @@
 
 ;; YASnippet.
 (use-package yasnippet
+  :init
+  (setq yas-indent-line 'auto)
+  (setq yas-also-auto-indent-first-line t)
   :config
   (yas-global-mode t))
 
