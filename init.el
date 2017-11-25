@@ -60,6 +60,16 @@
       (clang-format-buffer)))
   (add-hook 'before-save-hook 'clang-format-buffer-smart))
 
+(use-package eshell
+  :init
+  (add-hook 'eshell-mode-hook
+	    (lambda ()
+	      (add-to-list 'eshell-visual-commands "ssh")
+	      (add-to-list 'eshell-visual-commands "less")
+	      (add-to-list 'eshell-visual-commands "top")
+	      (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show"))))
+  (setq eshell-destroy-buffer-when-process-dies t))
+
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
 (setq ido-everywhere t)
@@ -96,7 +106,7 @@
   (moe-theme-set-color 'magenta))
 
 ;; Set default font.
-(set-face-attribute 'default nil :font "Deja Vu Sans Mono-13")
+(set-face-attribute 'default nil :font "Liberation Mono-13")
 
 ;; Sort apropos results by relevance.
 (setq apropos-sort-by-scores t)
@@ -135,3 +145,9 @@
 ;; But copy the expansion verbatim.
 (setq dabbrev-case-fold-search t)
 (setq dabbrev-case-replace nil)
+
+(defun find-user-init-file ()
+  "Edit init.el in another window."
+  (interactive)
+  (find-file-other-window user-init-file))
+(global-set-key (kbd "C-c I") 'find-user-init-file)
