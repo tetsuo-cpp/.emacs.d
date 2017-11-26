@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gtest_expect_true
+# key: et
+# --
+EXPECT_TRUE(${1:condition});

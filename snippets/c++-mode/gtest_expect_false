@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gtest_expect_false
+# key: ef
+# --
+EXPECT_FALSE(${1:condition});

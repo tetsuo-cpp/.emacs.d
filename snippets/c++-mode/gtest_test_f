@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: gtest_test_f
+# key: testf
+# --
+TEST_F(${1:fixture}, ${2:name})
+{
+    $0
+}

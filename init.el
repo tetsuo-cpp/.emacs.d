@@ -53,6 +53,7 @@
   (setq yas-indent-line 'auto)
   (setq yas-also-auto-indent-first-line t)
   :config
+  (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
   (yas-global-mode t))
 
 (use-package clang-format
@@ -72,6 +73,17 @@
 	      (add-to-list 'eshell-visual-commands "top")
 	      (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show"))))
   (setq eshell-destroy-buffer-when-process-dies t))
+
+;; Jump to visible text.
+(use-package avy
+  :init
+  (global-set-key (kbd "C-:") 'avy-goto-char)
+  (global-set-key (kbd "C-'") 'avy-goto-char-2)
+  (global-set-key (kbd "M-g f") 'avy-goto-line)
+  (global-set-key (kbd "M-g w") 'avy-goto-word-1)
+  (global-set-key (kbd "M-g e") 'avy-goto-word-0)
+  :config
+  (avy-setup-default))
 
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
@@ -100,16 +112,21 @@
 ;; Open .h files in C++ mode by default.
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+(use-package powerline
+  :init
+  (setq powerline-default-separator 'wave))
+
 ;; Use Moe dark theme.
 (use-package moe-theme
   :init
   (setq moe-theme-highlight-buffer-id nil)
   :config
   (load-theme 'moe-dark t)
+  (powerline-moe-theme)
   (moe-theme-set-color 'magenta))
 
 ;; Set default font.
-(set-face-attribute 'default nil :font "Liberation Mono-13")
+(set-face-attribute 'default nil :font "Deja Vu Sans Mono-13")
 
 ;; Sort apropos results by relevance.
 (setq apropos-sort-by-scores t)

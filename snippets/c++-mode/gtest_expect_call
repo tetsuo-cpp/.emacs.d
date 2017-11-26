@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gtest_expect_call
+# key: ec
+# --
+EXPECT_CALL(${1:mock}, ${2:function})${3:};
