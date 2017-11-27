@@ -106,7 +106,9 @@
         tab-width 4)
   (c-set-offset 'innamespace 0)
   (c-set-offset 'substatement-open 0)
-  (c-set-offset 'inline-open 0))
+  (c-set-offset 'inline-open 0)
+  (c-set-offset 'defun-block-intro 0)
+  (c-set-offset 'topmost-intro 0))
 (add-hook 'c++-mode-hook 'optiver-cpp-setup)
 
 ;; Open .h files in C++ mode by default.
