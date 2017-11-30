@@ -52,6 +52,7 @@
   :init
   (setq yas-indent-line 'auto)
   (setq yas-also-auto-indent-first-line t)
+  (setq yas-triggers-in-field t)
   :config
   (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
   (yas-global-mode t))
