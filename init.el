@@ -166,6 +166,7 @@
 
 ;; Disable scroll bar.
 (scroll-bar-mode -1)
+(menu-bar-mode -1)
 
 ;; Make DAbbrev ignore case when searching for expansions.
 ;; But copy the expansion verbatim.
@@ -180,3 +181,6 @@
 
 (show-paren-mode t)
 (setq show-paren-style 'expression)
+
+;; GUD configuration.
+(gud-tooltip-mode)
