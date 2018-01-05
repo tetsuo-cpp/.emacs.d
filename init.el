@@ -61,9 +61,10 @@
   :config
   (defun clang-format-buffer-smart ()
     "Reformat buffer if .clang-format exists in the projectile root."
+    (interactive)
     (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
       (clang-format-buffer)))
-  (add-hook 'before-save-hook 'clang-format-buffer-smart))
+  (global-set-key (kbd "C-c f") 'clang-format-buffer-smart))
 
 (use-package eshell
   :init
@@ -86,6 +87,10 @@
   :config
   (avy-setup-default))
 
+(use-package rust-mode
+  :init
+  (setq rust-format-on-save t))
+
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
 (setq ido-everywhere t)
@@ -107,9 +112,7 @@
         tab-width 4)
   (c-set-offset 'innamespace 0)
   (c-set-offset 'substatement-open 0)
-  (c-set-offset 'inline-open 0)
-  (c-set-offset 'defun-block-intro 0)
-  (c-set-offset 'topmost-intro 0))
+  (c-set-offset 'inline-open 0))
 (add-hook 'c++-mode-hook 'optiver-cpp-setup)
 
 ;; Open .h files in C++ mode by default.
@@ -129,7 +132,7 @@
   (moe-theme-set-color 'magenta))
 
 ;; Set default font.
-(set-face-attribute 'default nil :font "Deja Vu Sans Mono-13")
+(set-face-attribute 'default nil :font "Iosevka Term-14")
 
 ;; Sort apropos results by relevance.
 (setq apropos-sort-by-scores t)

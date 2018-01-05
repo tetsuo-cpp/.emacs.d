@@ -2,5 +2,5 @@
 # name: template
 # key: temp
 # --
-template<typename ${1:T}>
+template <typename ${1:T}>
 $0
