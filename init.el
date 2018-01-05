@@ -177,3 +177,6 @@
   (interactive)
   (find-file-other-window user-init-file))
 (global-set-key (kbd "C-c I") 'find-user-init-file)
+
+(show-paren-mode t)
+(setq show-paren-style 'expression)
