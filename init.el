@@ -142,17 +142,12 @@
 ;; Open .h files in C++ mode by default.
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-(use-package powerline
-  :init
-  (setq powerline-default-separator 'wave))
-
 ;; Use Moe dark theme.
 (use-package moe-theme
   :init
   (setq moe-theme-highlight-buffer-id nil)
   :config
   (load-theme 'moe-dark t)
-  (powerline-moe-theme)
   (moe-theme-set-color 'cyan))
 
 ;; Set default font.
