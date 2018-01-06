@@ -53,6 +53,10 @@
   (require 'smartparens-config)
   (smartparens-global-mode t))
 
+(use-package rainbow-delimiters
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
 ;; Indent with tabs and align with spaces.
 (use-package smart-tabs-mode
   :config
@@ -198,6 +202,7 @@
   (find-file-other-window user-init-file))
 (global-set-key (kbd "C-c I") 'find-user-init-file)
 
+(setq show-paren-delay 0)
 (show-paren-mode t)
 (setq show-paren-style 'expression)
 
