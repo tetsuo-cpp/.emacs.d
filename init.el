@@ -119,6 +119,12 @@
   :init
   (setq rust-format-on-save t))
 
+(use-package nyan-mode
+  :init
+  (setq nyan-animate-nyancat t)
+  (setq nyan-animation-frame-interval 0.1)
+  (nyan-mode))
+
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
 (setq ido-everywhere t)
