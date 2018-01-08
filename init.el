@@ -123,6 +123,7 @@
   :init
   (setq nyan-animate-nyancat t)
   (setq nyan-animation-frame-interval 0.1)
+  :config
   (nyan-mode))
 
 ;; Enable ido mode for file and buffer switching.
