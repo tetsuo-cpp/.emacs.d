@@ -162,7 +162,7 @@
   (moe-theme-set-color 'cyan))
 
 ;; Set default font.
-(set-face-attribute 'default nil :font "Iosevka Term-13")
+(set-face-attribute 'default nil :font "Iosevka Term-13.5")
 
 ;; Sort apropos results by relevance.
 (setq apropos-sort-by-scores t)
@@ -215,3 +215,9 @@
 
 ;; GUD configuration.
 (gud-tooltip-mode)
+
+;; Org configuration.
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-iswitchb)
