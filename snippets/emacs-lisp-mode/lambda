@@ -3,4 +3,6 @@
 #name: lambda
 #key: lam
 # --
-(lambda ($1) ${2:(interactive${3: "$4"}) }$0)
+(lambda ($1)
+  ${2:(interactive${3: "$4"})
+  }$0)

@@ -3,4 +3,3 @@
 # key: temp
 # --
 template <typename ${1:T}>
-$0

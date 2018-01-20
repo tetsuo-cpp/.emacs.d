@@ -1,9 +1,7 @@
 # -*- mode: snippet -*-
-# name: ife
-# key: ife
+# name: else
+# key: else
 # group : control structure
 # --
-if $1:
-    $2
 else:
     $0

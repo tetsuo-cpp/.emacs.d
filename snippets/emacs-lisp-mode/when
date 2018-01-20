@@ -2,4 +2,5 @@
 #name: when
 #key: w
 # --
-(when $0)
+(when $1
+  $0)
