@@ -126,6 +126,11 @@
   :config
   (nyan-mode))
 
+;; Scheme interaction.
+(use-package geiser
+  :init
+  (setq geiser-active-implementations '(guile)))
+
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
 (setq ido-everywhere t)
@@ -158,7 +163,7 @@
   :init
   (setq moe-theme-highlight-buffer-id nil)
   :config
-  (load-theme 'moe-dark t)
+  (moe-light)
   (moe-theme-set-color 'cyan))
 
 ;; Set default font.
