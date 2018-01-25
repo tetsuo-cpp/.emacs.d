@@ -3,5 +3,5 @@
 #key: if
 # --
 (if ${1:cond}
-    $2${3:
-  $})
+    ${2:if-branch}${3:
+  ${4:else-branch}})

@@ -2,5 +2,5 @@
 #name: when
 #key: w
 # --
-(when $1
+(when ${1:condition}
   $0)

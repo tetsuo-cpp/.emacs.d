@@ -2,5 +2,5 @@
 #name: unless
 #key: unless
 # --
-(unless $1
+(unless ${1:condition}
   $0)
