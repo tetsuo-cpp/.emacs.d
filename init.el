@@ -42,6 +42,12 @@
 ;; Enhanced ISearch.
 (use-package swiper)
 
+;; Edit Grep buffers.
+(use-package wgrep
+  :init
+  (setq wgrep-enable-key "e")
+  (setq wgrep-auto-save-buffer t))
+
 ;; Display what is bound to each key.
 (use-package which-key
   :config
@@ -107,11 +113,8 @@
 ;; Jump to visible text.
 (use-package avy
   :init
-  (global-set-key (kbd "C-:") 'avy-goto-char)
+  (global-set-key (kbd "C-;") 'avy-goto-line)
   (global-set-key (kbd "C-'") 'avy-goto-char-2)
-  (global-set-key (kbd "M-g f") 'avy-goto-line)
-  (global-set-key (kbd "M-g w") 'avy-goto-word-1)
-  (global-set-key (kbd "M-g e") 'avy-goto-word-0)
   :config
   (avy-setup-default))
 
@@ -158,7 +161,7 @@
 ;; Open .h files in C++ mode by default.
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; Use Moe dark theme.
+;; Use Moe light theme.
 (use-package moe-theme
   :init
   (setq moe-theme-highlight-buffer-id nil)
