@@ -134,6 +134,9 @@
   :init
   (setq geiser-active-implementations '(guile)))
 
+;; CMake editing.
+(use-package cmake-mode)
+
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
 (setq ido-everywhere t)
@@ -170,7 +173,7 @@
   (moe-theme-set-color 'cyan))
 
 ;; Set default font.
-(set-face-attribute 'default nil :font "Iosevka Term-13.5")
+(set-face-attribute 'default nil :font "Liberation Mono-13.5")
 
 ;; Sort apropos results by relevance.
 (setq apropos-sort-by-scores t)
