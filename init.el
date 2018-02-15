@@ -18,29 +18,22 @@
   :init
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
-  (global-set-key (kbd "C-s") 'swiper)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
-  (global-set-key (kbd "<f6>") 'ivy-resume)
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-  (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-  (global-set-key (kbd "<f1> l") 'counsel-find-library)
-  (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-  (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-  (global-set-key (kbd "C-c g") 'counsel-git)
-  (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  (global-set-key (kbd "C-c k") 'counsel-ag)
-  (global-set-key (kbd "C-x l") 'counsel-locate)
-  (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
   :config
   (ivy-mode t))
 
 ;; Use Ivy for more things.
-(use-package counsel)
+(use-package counsel
+  :bind (("M-x" . 'counsel-M-x)
+         ("C-x C-f" . 'counsel-find-file)
+         ("C-c g" . 'counsel-git)
+         ("C-c j" . 'counsel-git-grep)
+         ("C-c k" . 'counsel-ag)
+         ("C-x l" . 'counsel-locate)))
 
 ;; Enhanced ISearch.
-(use-package swiper)
+(use-package swiper
+  :bind (("C-s" . 'swiper)))
 
 ;; Edit Grep buffers.
 (use-package wgrep
@@ -80,6 +73,11 @@
 (use-package counsel-projectile
   :config
   (counsel-projectile-mode))
+
+;; Use Ivy completion for CTags.
+(use-package counsel-etags
+  :bind (("M-." . counsel-etags-find-tag-at-point)
+         ("M-]" . counsel-etags-find-tag)))
 
 ;; YASnippet.
 (use-package yasnippet
@@ -152,6 +150,7 @@
 (require 'dired-x)
 
 ;; Indentation.
+(setq-default indent-tabs-mode nil)
 (defun optiver-cpp-setup ()
   (setq c-default-style "linux"
         c-basic-offset 4
@@ -170,7 +169,7 @@
   (setq moe-theme-highlight-buffer-id nil)
   :config
   (moe-light)
-  (moe-theme-set-color 'cyan))
+  (moe-theme-set-color 'orange))
 
 ;; Set default font.
 (set-face-attribute 'default nil :font "Liberation Mono-13.5")
@@ -198,7 +197,7 @@
 
 ;; Customize cursor.
 (setq cursor-type 'box)
-(set-cursor-color "cyan")
+(set-cursor-color "orange")
 (blink-cursor-mode 0)
 (global-hl-line-mode t)
 
