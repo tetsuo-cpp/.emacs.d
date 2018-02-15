@@ -134,6 +134,18 @@
 ;; CMake editing.
 (use-package cmake-mode)
 
+;; Graphical system monitor.
+(use-package symon
+  :init
+  (setq symon-sparkline-type 'boxed)
+  :config
+  (symon-mode))
+
+;; Docker interface.
+(use-package docker
+  :config
+  (docker-global-mode))
+
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
 (setq ido-everywhere t)
