@@ -18,7 +18,7 @@
   :init
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  :bind (("C-c C-r" . 'ivy-resume))
   :config
   (ivy-mode t))
 
@@ -144,6 +144,10 @@
 ;; Docker interface.
 (use-package docker
   :config
+  ;; Docker needs to run with root privileges.
+  (defadvice docker (around docker-sudo-fix (action &rest args))
+    (let ((default-directory "/sudo::"))
+      ad-do-it action args))
   (docker-global-mode))
 
 ;; Dockerfile editing.
@@ -212,8 +216,8 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Customize cursor.
-(setq cursor-type 'box)
-(set-cursor-color "orange")
+(setq-default cursor-type 'bar)
+(set-cursor-color "red")
 (blink-cursor-mode 0)
 (global-hl-line-mode t)
 
