@@ -115,9 +115,13 @@
   :config
   (avy-setup-default))
 
+;; Rust support.
 (use-package rust-mode
   :init
   (setq rust-format-on-save t))
+
+;; Lua support.
+(use-package lua-mode)
 
 (use-package nyan-mode
   :init
