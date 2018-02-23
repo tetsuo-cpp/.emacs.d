@@ -24,12 +24,12 @@
 
 ;; Use Ivy for more things.
 (use-package counsel
-  :bind (("M-x"     . 'counsel-M-x)
+  :bind (("M-x" . 'counsel-M-x)
          ("C-x C-f" . 'counsel-find-file)
-         ("C-c g"   . 'counsel-git)
-         ("C-c j"   . 'counsel-git-grep)
-         ("C-c k"   . 'counsel-ag)
-         ("C-x l"   . 'counsel-locate)))
+         ("C-c g" . 'counsel-git)
+         ("C-c j" . 'counsel-git-grep)
+         ("C-c k" . 'counsel-ag)
+         ("C-x l" . 'counsel-locate)))
 
 ;; Enhanced ISearch.
 (use-package swiper
@@ -159,27 +159,6 @@
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-;; Minor mode for editing without modifiers.
-(use-package god-mode
-  :init
-  (setq god-exempt-major-modes nil)
-  (setq god-exempt-predicates nil)
-  :bind (("<escape>" . 'god-mode-all)
-         ("C-z"      . 'repeat)
-         ;; Convenient window management in god-mode.
-         ("C-x C-1"  . 'delete-other-windows)
-         ("C-x C-2"  . 'split-window-below)
-         ("C-x C-3"  . 'split-window-right)
-         ("C-x C-0"  . 'delete-window))
-  :config
-  (defun god-update-cursor ()
-    "Toggle cursor type based on whether god-mode is on."
-    (setq cursor-type (if (or god-local-mode buffer-read-only)
-                          'box
-                        'bar)))
-  (add-hook 'god-mode-enabled-hook 'god-update-cursor)
-  (add-hook 'god-mode-disabled-hook 'god-update-cursor))
-
 ;; Enable ido mode for file and buffer switching.
 (ido-mode t)
 (setq ido-everywhere t)
@@ -262,7 +241,7 @@
   "Edit init.el in another window."
   (interactive)
   (find-file-other-window user-init-file))
-(global-set-key (kbd "C-c C-i") 'find-user-init-file)
+(global-set-key (kbd "C-c I") 'find-user-init-file)
 
 (setq show-paren-delay 0)
 (show-paren-mode t)
