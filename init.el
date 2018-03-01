@@ -76,8 +76,17 @@
 
 ;; Use Ivy completion for CTags.
 (use-package counsel-etags
+  :disabled
   :bind (("M-." . counsel-etags-find-tag-at-point)
          ("M-]" . counsel-etags-find-tag)))
+
+;; GNU Global (GTags) frontend.
+;; Commands are identical to CTags.
+(use-package ggtags
+  :config
+  (add-hook 'c++-mode-hook
+            (lambda ()
+              (ggtags-mode 1))))
 
 ;; YASnippet.
 (use-package yasnippet
@@ -90,13 +99,13 @@
   (yas-global-mode t))
 
 (use-package clang-format
+  :bind (("C-c f" . 'clang-format-buffer-smart))
   :config
   (defun clang-format-buffer-smart ()
     "Reformat buffer if .clang-format exists in the projectile root."
     (interactive)
     (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
-      (clang-format-buffer)))
-  (global-set-key (kbd "C-c f") 'clang-format-buffer-smart))
+      (clang-format-buffer))))
 
 (use-package eshell
   :init
