@@ -76,6 +76,7 @@
 
 ;; Use Ivy completion for CTags.
 (use-package counsel-etags
+  ;; Using GTags instead for now.
   :disabled
   :bind (("M-." . counsel-etags-find-tag-at-point)
          ("M-]" . counsel-etags-find-tag)))
@@ -83,6 +84,9 @@
 ;; GNU Global (GTags) frontend.
 ;; Commands are identical to CTags.
 (use-package ggtags
+  :init
+  ;; Use executables under ~/.emacs.d/global.
+  (setq ggtags-executable-directory (concat user-emacs-directory "global"))
   :config
   (add-hook 'c++-mode-hook
             (lambda ()
