@@ -67,8 +67,20 @@
   (setq projectile-completion-system 'ivy)
   (setq projectile-use-git-grep t)
   (setq projectile-enable-caching t)
+  :bind (("C-c p G u" . 'projectile-global-up)
+         ("C-c p G d" . 'projectile-global-down))
   :config
-  (projectile-global-mode))
+  (projectile-global-mode)
+  ;; Convenient functions for bringing global up and down.
+  (defun projectile-global-up ()
+    "Start GNU Global Docker container."
+    (interactive)
+    (shell-command (concat "cd " (projectile-project-root) " && "
+                           (concat user-emacs-directory "global/start_global.sh"))))
+  (defun projectile-global-down ()
+    "Stop GNU Global Docker container."
+    (interactive)
+    (shell-command (concat user-emacs-directory "global/stop_global.sh"))))
 
 (use-package counsel-projectile
   :config
