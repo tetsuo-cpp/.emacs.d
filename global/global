@@ -2,4 +2,4 @@
 
 docker exec \
        global_env \
-       global "$@"
+       cd ${PWD} && global "$@"

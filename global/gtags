@@ -2,4 +2,4 @@
 
 docker exec \
        global_env \
-       gtags "$@"
+       cd ${PWD} && gtags "$@"
