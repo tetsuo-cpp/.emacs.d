@@ -1,5 +1,6 @@
 #!/bin/sh
 
+gtags_args="$@"
 docker exec \
        global_env \
-       cd ${PWD} && gtags "$@"
+       sh -c "cd ${PWD} && gtags ${gtags_args}"

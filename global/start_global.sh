@@ -6,4 +6,4 @@ docker run -d --rm \
        -v ${PWD}:${PWD}:z \
        --name global_env \
        -t global_env \
-       bash
+       sh

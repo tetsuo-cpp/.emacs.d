@@ -1,3 +1,4 @@
-FROM fedora:27
+FROM alpine:edge
 
-RUN dnf update -y && dnf install -y global
+RUN echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk add --no-cache global
