@@ -98,7 +98,7 @@
 (use-package ggtags
   :init
   ;; Use executables under ~/.emacs.d/global.
-  (setq ggtags-executable-directory (concat user-emacs-directory "global"))
+  ;; (setq ggtags-executable-directory (concat user-emacs-directory "global"))
   :config
   (add-hook 'c++-mode-hook
             (lambda ()
@@ -165,6 +165,8 @@
 
 ;; Graphical system monitor.
 (use-package symon
+  ;; The fringe display useful information when using Global.
+  :disabled
   :init
   (setq symon-sparkline-type 'boxed)
   :config
@@ -221,7 +223,7 @@
   (moe-theme-set-color 'orange))
 
 ;; Set default font.
-(set-face-attribute 'default nil :font "Liberation Mono-13.5")
+(set-face-attribute 'default nil :font "Liberation Mono-14")
 
 ;; Sort apropos results by relevance.
 (setq apropos-sort-by-scores t)
