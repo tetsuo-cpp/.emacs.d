@@ -68,6 +68,7 @@
                          (add-to-list 'eshell-visual-commands "ssh")
                          (add-to-list 'eshell-visual-commands "less")
                          (add-to-list 'eshell-visual-commands "git")))
+  :config
   (setq eshell-destroy-buffer-when-process-dies t))
 
 (use-package geiser
@@ -131,7 +132,6 @@
   (setq wgrep-auto-save-buffer t))
 
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode))
 
