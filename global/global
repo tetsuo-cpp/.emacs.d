@@ -1,6 +1,0 @@
-#!/bin/sh
-
-global_args="$@"
-docker exec \
-       global_env \
-       sh -c "export GTAGSFORCECPP='' && cd ${PWD} && global ${global_args}"
