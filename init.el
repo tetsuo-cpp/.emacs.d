@@ -9,17 +9,17 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
-;; (setq use-package-always-ensure t)
 
 ;; Packages.
 (use-package avy
+  :ensure t
   :bind (("C-;" . 'avy-goto-line)
          ("C-'" . 'avy-goto-char-timer))
   :config
   (avy-setup-default))
 
 (use-package c++
-  :mode ("\\.h\\'")
+  :mode ("\\.h\\'" . c++-mode)
   :hook (c++-mode . optiver-cpp-setup)
   :preface
   (defun optiver-cpp-setup ()
@@ -31,6 +31,7 @@
     (c-set-offset 'inline-open 0)))
 
 (use-package clang-format
+  :ensure t
   :after projectile
   :bind (("C-c f" . 'projectile-clang-format))
   :preface
@@ -39,13 +40,14 @@
     (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
       (clang-format-buffer))))
 
-(use-package cmake-mode)
+(use-package cmake-mode :ensure t)
 
 (use-package compile
   :init
   (setq compilation-scroll-output t))
 
 (use-package counsel
+  :ensure t
   :after ivy
   :bind (("M-x"     . 'counsel-M-x)
          ("C-x C-f" . 'counsel-find-file)
@@ -55,11 +57,13 @@
          ("C-x l"   . 'counsel-locate)))
 
 (use-package counsel-projectile
+  :ensure t
   :after (counsel projectile)
   :config
   (counsel-projectile-mode))
 
 (use-package dockerfile-mode
+  :ensure t
   :mode "Dockerfile\\'")
 
 (use-package eshell
@@ -72,10 +76,12 @@
   (setq eshell-destroy-buffer-when-process-dies t))
 
 (use-package geiser
+  :ensure t
   :init
   (setq geiser-active-implementations '(guile)))
 
 (use-package ggtags
+  :ensure t
   :hook (c++-mode . (lambda ()
                       (ggtags-mode t))))
 
@@ -84,6 +90,7 @@
   (gud-tooltip-mode))
 
 (use-package ivy
+  :ensure t
   :init
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
@@ -94,6 +101,7 @@
   (ivy-mode t))
 
 (use-package projectile
+  :ensure t
   :after ivy
   :init
   (setq projectile-completion-system 'ivy)
@@ -103,20 +111,24 @@
   (projectile-global-mode))
 
 (use-package rainbow-delimiters
+  :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package rebecca-theme)
+(use-package rebecca-theme :ensure t)
 
 (use-package smartparens
+  :ensure t
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t))
 
 (use-package smart-tabs-mode
+  :ensure t
   :config
   (smart-tabs-insinuate 'c++))
 
 (use-package swiper
+  :ensure t
   :after ivy
   :bind (("C-s" . 'swiper)
          ("M-%" . 'swiper-query-replace)
@@ -128,14 +140,17 @@
         (cons 'tramp-own-remote-path tramp-remote-path)))
 
 (use-package wgrep
+  :ensure t
   :init
   (setq wgrep-auto-save-buffer t))
 
 (use-package which-key
+  :ensure t
   :config
   (which-key-mode))
 
 (use-package yasnippet
+  :ensure t
   :init
   (setq yas-indent-line 'auto)
   (setq yas-also-indent-first-line t)
