@@ -1,7 +1,8 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives
-      '(("melpa" . "http://melpa.org/packages/")))
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 
 ;; Bootstrap config.
@@ -13,6 +14,7 @@
 ;; Packages.
 (use-package avy
   :ensure t
+  :pin melpa
   :bind (("C-;" . 'avy-goto-line)
          ("C-'" . 'avy-goto-char-timer))
   :config
@@ -32,6 +34,7 @@
 
 (use-package clang-format
   :ensure t
+  :pin melpa
   :after projectile
   :bind (("C-c f" . 'projectile-clang-format))
   :preface
@@ -40,7 +43,9 @@
     (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
       (clang-format-buffer))))
 
-(use-package cmake-mode :ensure t)
+(use-package cmake-mode
+  :ensure t
+  :pin melpa)
 
 (use-package compile
   :init
@@ -48,6 +53,7 @@
 
 (use-package counsel
   :ensure t
+  :pin melpa
   :after ivy
   :bind (("M-x"     . 'counsel-M-x)
          ("C-x C-f" . 'counsel-find-file)
@@ -58,12 +64,14 @@
 
 (use-package counsel-projectile
   :ensure t
+  :pin melpa
   :after (counsel projectile)
   :config
   (counsel-projectile-mode))
 
 (use-package dockerfile-mode
   :ensure t
+  :pin melpa
   :mode "Dockerfile\\'")
 
 (use-package eshell
@@ -77,11 +85,13 @@
 
 (use-package geiser
   :ensure t
+  :pin melpa
   :init
   (setq geiser-active-implementations '(guile)))
 
 (use-package ggtags
   :ensure t
+  :pin melpa
   :hook (c++-mode . (lambda ()
                       (ggtags-mode t))))
 
@@ -91,6 +101,7 @@
 
 (use-package ivy
   :ensure t
+  :pin melpa
   :init
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
@@ -100,8 +111,14 @@
   :config
   (ivy-mode t))
 
+(use-package magit
+  :ensure t
+  :pin melpa
+  :bind (("C-x g" . 'magit-status)))
+
 (use-package projectile
   :ensure t
+  :pin melpa
   :after ivy
   :init
   (setq projectile-completion-system 'ivy)
@@ -112,23 +129,29 @@
 
 (use-package rainbow-delimiters
   :ensure t
+  :pin melpa
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package rebecca-theme :ensure t)
+(use-package rebecca-theme
+  :ensure t
+  :pin melpa)
 
 (use-package smartparens
   :ensure t
+  :pin melpa
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t))
 
 (use-package smart-tabs-mode
   :ensure t
+  :pin melpa
   :config
   (smart-tabs-insinuate 'c++))
 
 (use-package swiper
   :ensure t
+  :pin melpa
   :after ivy
   :bind (("C-s" . 'swiper)
          ("M-%" . 'swiper-query-replace)
@@ -141,16 +164,19 @@
 
 (use-package wgrep
   :ensure t
+  :pin melpa
   :init
   (setq wgrep-auto-save-buffer t))
 
 (use-package which-key
   :ensure t
+  :pin melpa
   :config
   (which-key-mode))
 
 (use-package yasnippet
   :ensure t
+  :pin melpa
   :init
   (setq yas-indent-line 'auto)
   (setq yas-also-indent-first-line t)
@@ -167,6 +193,7 @@
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
+(setq ring-bell-function 'ignore)
 
 (setq apropos-sort-by-scores t)
 
