@@ -97,6 +97,8 @@
                       (ggtags-mode t))))
 
 (use-package gud
+  :init
+  (setq gdb-many-windows t)
   :config
   (gud-tooltip-mode))
 
