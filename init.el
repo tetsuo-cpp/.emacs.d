@@ -114,7 +114,8 @@
 (use-package magit
   :ensure t
   :pin melpa
-  :bind (("C-x g" . 'magit-status)))
+  :bind (("C-x g"   . 'magit-status)
+         ("C-x M-g" . 'magit-dispatch-popup)))
 
 (use-package projectile
   :ensure t
@@ -210,9 +211,11 @@
 
 (require 'dired-x)
 
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 (defun find-user-init-file ()
   (interactive)
   (find-file-other-window user-init-file))
 (global-set-key (kbd "C-c I") 'find-user-init-file)
+
+(global-auto-revert-mode t)
