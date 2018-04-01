@@ -1,8 +1,8 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives
-      '(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")))
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 ;; Bootstrap config.
@@ -81,7 +81,8 @@
                          (add-to-list 'eshell-visual-commands "less")
                          (add-to-list 'eshell-visual-commands "git")))
   :config
-  (setq eshell-destroy-buffer-when-process-dies t))
+  (setq eshell-destroy-buffer-when-process-dies t)
+  (eshell))
 
 (use-package geiser
   :ensure t
