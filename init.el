@@ -88,7 +88,7 @@
   :ensure t
   :pin melpa
   :init
-  (setq geiser-active-implementations '(guile)))
+  (setq geiser-active-implementations '(guile racket)))
 
 (use-package ggtags
   :ensure t
@@ -193,7 +193,7 @@
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-(set-face-attribute 'default nil :font "Deja Vu Sans Mono-14")
+(set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=19")
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
@@ -222,3 +222,4 @@
 (global-set-key (kbd "C-c I") 'find-user-init-file)
 
 (global-auto-revert-mode t)
+(delete-selection-mode t)
