@@ -157,9 +157,10 @@
   :ensure t
   :pin melpa
   :after ivy
-  :bind (("C-s" . 'swiper)
-         ("M-%" . 'swiper-query-replace)
-         ("C-." . 'swiper-avy)))
+  :bind ("C-s" . 'swiper)
+  :bind (:map swiper-map
+              ("M-%" . 'swiper-query-replace)
+              ("C-." . 'swiper-avy)))
 
 (use-package tramp
   :config
