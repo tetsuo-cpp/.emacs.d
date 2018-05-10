@@ -93,8 +93,12 @@
 (use-package ggtags
   :ensure t
   :pin melpa
-  :hook (c++-mode . (lambda ()
-                      (ggtags-mode t))))
+  :hook ((c++-mode . enable-ggtags)
+         (c-mode   . enable-ggtags))
+  :config
+  (defun enable-ggtags ()
+    "Enable GGTags."
+    (ggtags-mode t)))
 
 (use-package gud
   :init
@@ -135,10 +139,6 @@
   :ensure t
   :pin melpa
   :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package rebecca-theme
-  :ensure t
-  :pin melpa)
 
 (use-package smartparens
   :ensure t
@@ -191,6 +191,7 @@
   (yas-global-mode t))
 
 ;; Settings.
+(load-theme 'adwaita)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
@@ -198,6 +199,8 @@
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
+(set-face-background hl-line-face "gray")
+(set-face-foreground 'highlight nil)
 (setq ring-bell-function 'ignore)
 
 (setq apropos-sort-by-scores t)
