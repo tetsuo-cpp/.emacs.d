@@ -20,6 +20,10 @@
   :config
   (avy-setup-default))
 
+(use-package bison-mode
+  :ensure t
+  :pin melpa)
+
 (use-package c++
   :mode ("\\.h\\'" . c++-mode)
   :hook (c++-mode . optiver-cpp-setup)
