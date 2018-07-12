@@ -183,6 +183,11 @@
   :config
   (which-key-mode))
 
+(use-package yaml-mode
+  :ensure t
+  :pin melpa
+  :mode ("\\.yml\\'" "\\.clang-format\\'"))
+
 (use-package yasnippet
   :ensure t
   :pin melpa
