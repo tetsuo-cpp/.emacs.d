@@ -144,6 +144,10 @@
   :pin melpa
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package rebecca-theme
+  :ensure t
+  :pin melpa)
+
 (use-package smartparens
   :ensure t
   :pin melpa
@@ -200,7 +204,6 @@
   (yas-global-mode t))
 
 ;; Settings.
-(load-theme 'adwaita)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
@@ -208,7 +211,6 @@
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
-(set-face-background hl-line-face "gray")
 (set-face-foreground 'highlight nil)
 (setq ring-bell-function 'ignore)
 
