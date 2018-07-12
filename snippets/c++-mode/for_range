@@ -2,7 +2,7 @@
 # name: for_range
 # key: forr
 # --
-for (${1:const auto&} ${2:elem} : ${3:container})
+for (${1:const} ${2:auto&} ${3:elem} : ${4:container})
 {
     $0
 }
