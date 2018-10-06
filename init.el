@@ -151,6 +151,8 @@
 (use-package smartparens
   :ensure t
   :pin melpa
+  :init
+  (setq-default sp-escape-quotes-after-insert nil)
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t))
@@ -207,7 +209,8 @@
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-(set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=19")
+(set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=21")
+(setq-default cursor-type 'box)
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
