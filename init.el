@@ -128,6 +128,10 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
+(use-package nofrils-acme-theme
+  :ensure t
+  :pin melpa)
+
 (use-package projectile
   :ensure t
   :pin melpa
@@ -137,16 +141,22 @@
   (setq projectile-use-git-grep t)
   (setq projectile-enable-caching t)
   :config
-  (projectile-global-mode))
+  (setq projectile-globally-ignored-file-suffixes
+        (append '(".o"
+                  ".bin"
+                  ".pyc"
+                  "~")
+                projectile-globally-ignored-file-suffixes))
+  (setq projectile-globally-ignored-directories
+        (append '("CMakeFiles/"
+                  "build/")
+                projectile-globally-ignored-directories))
+  (projectile-mode))
 
 (use-package rainbow-delimiters
   :ensure t
   :pin melpa
   :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package rebecca-theme
-  :ensure t
-  :pin melpa)
 
 (use-package smartparens
   :ensure t
