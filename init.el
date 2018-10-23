@@ -29,9 +29,9 @@
   :hook (c++-mode . optiver-cpp-setup)
   :preface
   (defun optiver-cpp-setup ()
-    (setq c-default-style "linux")
-    (setq c-basic-offset 4)
-    (setq tab-width 4)
+    (setq c-default-style "linux"
+          c-basic-offset 4
+          tab-width 4)
     (c-set-offset 'innamespace 0)
     (c-set-offset 'substatement-open 0)
     (c-set-offset 'inline-open 0)))
@@ -114,8 +114,8 @@
   :ensure t
   :pin melpa
   :init
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
+  (setq ivy-use-virtual-buffers t
+        enable-recursive-minibuffers t)
   :bind (("C-c C-r" . 'ivy-resume)
          ("C-x b"   . 'ivy-switch-buffer)
          ("C-x B"   . 'ivy-switch-buffer-other-window))
@@ -137,17 +137,17 @@
   :pin melpa
   :after ivy
   :init
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-use-git-grep t)
-  (setq projectile-enable-caching t)
+  (setq projectile-completion-system 'ivy
+        projectile-use-git-grep t
+        projectile-enable-caching t)
   :config
   (setq projectile-globally-ignored-file-suffixes
         (append '(".o"
                   ".bin"
                   ".pyc"
                   "~")
-                projectile-globally-ignored-file-suffixes))
-  (setq projectile-globally-ignored-directories
+                projectile-globally-ignored-file-suffixes)
+        projectile-globally-ignored-directories
         (append '("CMakeFiles/"
                   "build/")
                 projectile-globally-ignored-directories))
@@ -208,9 +208,9 @@
   :ensure t
   :pin melpa
   :init
-  (setq yas-indent-line 'auto)
-  (setq yas-also-indent-first-line t)
-  (setq yas-triggers-in-field t)
+  (setq yas-indent-line 'auto
+        yas-also-indent-first-line t
+        yas-triggers-in-field t)
   :config
   (setq yas-snippets-dir (concat user-emacs-directory "snippets"))
   (yas-global-mode t))
@@ -233,11 +233,11 @@
 
 (windmove-default-keybindings)
 
-(setq dabbrev-case-fold-search t)
-(setq dabbrev-case-replace nil)
+(setq dabbrev-case-fold-search t
+      dabbrev-case-replace nil)
 
-(setq show-paren-delay 0)
-(setq show-paren-style 'expression)
+(setq show-paren-delay 0
+      show-paren-style 'expression)
 (show-paren-mode t)
 
 (require 'dired-x)
