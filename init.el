@@ -128,10 +128,6 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
-(use-package nofrils-acme-theme
-  :ensure t
-  :pin melpa)
-
 (use-package projectile
   :ensure t
   :pin melpa
@@ -216,6 +212,7 @@
   (yas-global-mode t))
 
 ;; Settings.
+(load-theme 'adwaita)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
@@ -224,6 +221,7 @@
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
+(set-face-background hl-line-face "gray")
 (set-face-foreground 'highlight nil)
 (setq ring-bell-function 'ignore)
 
