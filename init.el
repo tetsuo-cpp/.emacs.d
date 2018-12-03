@@ -149,6 +149,10 @@
                 projectile-globally-ignored-directories))
   (projectile-mode))
 
+(use-package protobuf-mode
+  :ensure t
+  :pin melpa)
+
 (use-package rainbow-delimiters
   :ensure t
   :pin melpa
