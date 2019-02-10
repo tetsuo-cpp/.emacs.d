@@ -24,8 +24,18 @@
   :ensure t
   :pin melpa)
 
+(use-package c
+  :mode ("\\.h\\'" . c-mode)
+  :hook (c-mode . wiredtiger-c-setup)
+  :preface
+  (defun wiredtiger-c-setup ()
+    (setq c-default-style "bsd"
+          c-basic-offset 4
+          tab-width 4)
+    (c-set-offset 'substatement-open 0)
+    (c-set-offset 'arglist-intro '+)))
+
 (use-package c++
-  :mode ("\\.h\\'" . c++-mode)
   :hook (c++-mode . optiver-cpp-setup)
   :preface
   (defun optiver-cpp-setup ()
@@ -171,7 +181,8 @@
   :ensure t
   :pin melpa
   :config
-  (smart-tabs-insinuate 'c++))
+  (smart-tabs-insinuate 'c++)
+  (smart-tabs-insinuate 'c))
 
 (use-package swiper
   :ensure t
