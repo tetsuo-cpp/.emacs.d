@@ -98,6 +98,12 @@
   (setq eshell-destroy-buffer-when-process-dies t)
   (eshell))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :pin melpa
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package geiser
   :ensure t
   :pin melpa
@@ -112,7 +118,8 @@
   :config
   (defun enable-ggtags ()
     "Enable GGTags."
-    (ggtags-mode t)))
+    (ggtags-mode t))
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
 
 (use-package gud
   :init
@@ -145,7 +152,8 @@
   :init
   (setq projectile-completion-system 'ivy
         projectile-use-git-grep t
-        projectile-enable-caching t)
+        projectile-enable-caching t
+        projectile-keymap-prefix (kbd "C-c p"))
   :config
   (setq projectile-globally-ignored-file-suffixes
         (append '(".o"
@@ -231,7 +239,9 @@
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-(set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=21")
+(if (eq system-type 'darwin)
+    (set-face-attribute 'default nil :font "Monaco:size=21")
+  (set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=21"))
 (setq-default cursor-type 'box)
 (set-cursor-color "red")
 (blink-cursor-mode -1)
