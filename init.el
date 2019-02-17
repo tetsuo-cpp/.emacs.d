@@ -24,6 +24,11 @@
   :ensure t
   :pin melpa)
 
+(use-package blacken
+  :ensure t
+  :pin melpa
+  :hook (python-mode . blacken-mode))
+
 (use-package c
   :mode ("\\.h\\'" . c-mode)
   :hook (c-mode . wiredtiger-c-setup)
