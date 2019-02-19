@@ -15,8 +15,8 @@
 (use-package avy
   :ensure t
   :pin melpa
-  :bind (("C-c C-s" . 'avy-goto-line)
-         ("C-c C-c" . 'avy-goto-char-timer))
+  :bind (("C-c s" . 'avy-goto-line)
+         ("C-c c" . 'avy-goto-char-timer))
   :config
   (avy-setup-default))
 
