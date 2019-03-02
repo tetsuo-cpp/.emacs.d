@@ -132,6 +132,10 @@
   :config
   (gud-tooltip-mode))
 
+(use-package inf-mongo
+  :ensure t
+  :pin melpa)
+
 (use-package ivy
   :ensure t
   :pin melpa
