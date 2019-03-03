@@ -66,6 +66,10 @@
   :ensure t
   :pin melpa)
 
+(use-package common-lisp-snippets
+  :ensure t
+  :pin melpa)
+
 (use-package compile
   :init
   (setq compilation-scroll-output t))
@@ -184,6 +188,13 @@
   :ensure t
   :pin melpa
   :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package slime
+  :ensure t
+  :pin melpa
+  :init
+  (setq inferior-lisp-program "sbcl")
+  (setq slime-contribs '(common-lisp-snippets)))
 
 (use-package smartparens
   :ensure t
