@@ -269,6 +269,7 @@
 (set-face-background hl-line-face "gray")
 (set-face-foreground 'highlight nil)
 (setq ring-bell-function 'ignore)
+(column-number-mode)
 
 (setq apropos-sort-by-scores t)
 
