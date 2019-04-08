@@ -36,7 +36,7 @@
   (defun wiredtiger-c-setup ()
     (setq c-default-style "bsd"
           c-basic-offset 4
-          tab-width 4)
+          tab-width 8)
     (c-set-offset 'substatement-open 0)
     (c-set-offset 'arglist-intro '+)))
 
