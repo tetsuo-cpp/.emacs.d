@@ -130,6 +130,14 @@
     (ggtags-mode t))
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
 
+(use-package go-mode
+  :ensure t
+  :pin melpa)
+
+(use-package go-snippets
+  :ensure t
+  :pin melpa)
+
 (use-package gud
   :init
   (setq gdb-many-windows t)
@@ -255,12 +263,12 @@
   (yas-global-mode t))
 
 ;; Settings.
-(load-theme 'adwaita)
+(load-theme 'leuven)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (if (eq system-type 'darwin)
-    (set-face-attribute 'default nil :font "Monaco:size=21")
+    (set-face-attribute 'default nil :font "Menlo:size=21")
   (set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=21"))
 (setq-default cursor-type 'box)
 (set-cursor-color "red")
