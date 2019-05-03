@@ -107,6 +107,10 @@
   (setq eshell-destroy-buffer-when-process-dies t)
   (eshell))
 
+(use-package evil
+  :ensure t
+  :pin melpa)
+
 (use-package exec-path-from-shell
   :ensure t
   :pin melpa
