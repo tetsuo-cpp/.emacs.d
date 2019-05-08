@@ -273,7 +273,7 @@
 (menu-bar-mode -1)
 (if (eq system-type 'darwin)
     (set-face-attribute 'default nil :font "Menlo:size=21")
-  (set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=21"))
+  (set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=20"))
 (setq-default cursor-type 'box)
 (set-cursor-color "red")
 (blink-cursor-mode -1)
