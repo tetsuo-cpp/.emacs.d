@@ -282,6 +282,7 @@
 (set-face-foreground 'highlight nil)
 (setq ring-bell-function 'ignore)
 (column-number-mode)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq apropos-sort-by-scores t)
 
