@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gtest_assert_call
+# key: ac
+# --
+ASSERT_CALL(${1:mock}, ${2:function})${3:};

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gtest_assert_eq
+# key: ae
+# --
+ASSERT_EQ(${1:rhs}, ${2:lhs});

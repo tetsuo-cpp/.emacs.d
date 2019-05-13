@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gtest_expect_that
+# key: eth
+# --
+EXPECT_THAT(${1:var}, ${2:condition});

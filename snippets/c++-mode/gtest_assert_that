@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gtest_assert_that
+# key: ath
+# --
+ASSERT_THAT(${1:var}, ${2:condition});
