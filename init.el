@@ -27,7 +27,12 @@
 (use-package blacken
   :ensure t
   :pin melpa
-  :hook (python-mode . blacken-mode))
+  :hook (python-mode . enable-blacken)
+  :config
+  (defun enable-blacken ()
+    (interactive)
+    "Enable Blacken Formatter"
+    (local-set-key (kbd "C-c f") 'blacken-buffer)))
 
 (use-package c
   :mode ("\\.h\\'" . c-mode)
@@ -55,12 +60,18 @@
   :ensure t
   :pin melpa
   :after projectile
-  :bind (("C-c f" . 'projectile-clang-format))
-  :preface
+  :hook ((c++-mode . enable-clang-format)
+         (c-mode   . enable-clang-format))
+  :config
   (defun projectile-clang-format ()
     (interactive)
-    (when (file-exists-p (expand-file-name ".clang-format" (projectile-project-root)))
-      (clang-format-buffer))))
+    (when (file-exists-p
+           (expand-file-name ".clang-format" (projectile-project-root)))
+      (clang-format-buffer)))
+  (defun enable-clang-format ()
+    (interactive)
+    "Enable Clang Format"
+    (local-set-key (kbd "C-c f") 'projectile-clang-format)))
 
 (use-package cmake-mode
   :ensure t
