@@ -264,7 +264,7 @@
 (use-package yaml-mode
   :ensure t
   :pin melpa
-  :mode ("\\.yml\\'" "\\.clang-format\\'"))
+  :mode ("\\.yml\\'" "\\.clang-format\\'" "\\.idl\\'"))
 
 (use-package yasnippet
   :ensure t
