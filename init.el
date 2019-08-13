@@ -181,6 +181,19 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
+(use-package pomidor
+  :ensure t
+  :pin melpa
+  :bind (("C-x p" . pomidor))
+  ;; I don't want my Emacs to be noisy...
+  :config (setq pomidor-sound-tick nil
+                pomidor-sound-tack nil)
+  :hook (pomidor-mode . (lambda ()
+                          (setq left-fringe-width 0 right-fringe-width 0)
+                          (setq left-margin-width 2 right-margin-width 0)
+                          ;; Force fringe update.
+                          (set-window-buffer nil (current-buffer)))))
+
 (use-package projectile
   :ensure t
   :pin melpa
