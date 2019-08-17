@@ -229,7 +229,11 @@
   :ensure t
   :pin melpa
   :init
-  (setq inferior-lisp-program "sbcl")
+  ;; Whenever I do (read-line *query-io*) via SLIME, SBCL terminates.
+  ;; Works fine via the terminal so maybe it's a SLIME thing. Either way, I'm
+  ;; developing with CLISP for the time being.
+  ;; (setq inferior-lisp-program "sbcl")
+  (setq inferior-lisp-program "clisp")
   (setq slime-contribs '(common-lisp-snippets)))
 
 (use-package smartparens
