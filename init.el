@@ -40,8 +40,7 @@
   :preface
   (defun wiredtiger-c-setup ()
     (setq c-default-style "bsd"
-          c-basic-offset 4
-          tab-width 8)
+          c-basic-offset 4)
     (c-set-offset 'substatement-open 0)
     (c-set-offset 'arglist-intro '+)))
 
@@ -249,8 +248,7 @@
   :ensure t
   :pin melpa
   :config
-  (smart-tabs-insinuate 'c++)
-  (smart-tabs-insinuate 'c))
+  (smart-tabs-insinuate 'c++))
 
 (use-package swiper
   :ensure t
