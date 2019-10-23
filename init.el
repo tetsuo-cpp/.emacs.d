@@ -228,11 +228,8 @@
   :ensure t
   :pin melpa
   :init
-  ;; Whenever I do (read-line *query-io*) via SLIME, SBCL terminates.
-  ;; Works fine via the terminal so maybe it's a SLIME thing. Either way, I'm
-  ;; developing with CLISP for the time being.
-  ;; (setq inferior-lisp-program "sbcl")
-  (setq inferior-lisp-program "clisp")
+  (load (expand-file-name "~/.roswell/helper.el"))
+  (setq inferior-lisp-program "ros -Q run")
   (setq slime-contribs '(common-lisp-snippets)))
 
 (use-package smartparens
