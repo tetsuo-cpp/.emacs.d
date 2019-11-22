@@ -144,6 +144,10 @@
     (ggtags-mode t))
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
 
+(use-package github-review
+  :ensure t
+  :pin melpa)
+
 (use-package go-mode
   :ensure t
   :pin melpa)
