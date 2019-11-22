@@ -180,6 +180,14 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
+(use-package oberon
+  :ensure t
+  :pin melpa
+  :init
+  (add-to-list 'auto-mode-alist '("\\.Mod\\'" . oberon-mode))
+  (autoload 'oberon-mode "oberon" nil t)
+  (add-hook 'oberon-mode-hook (lambda () (abbrev-mode t))))
+
 (use-package pomidor
   :ensure t
   :pin melpa
