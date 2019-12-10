@@ -156,6 +156,12 @@
   :ensure t
   :pin melpa)
 
+(use-package gruvbox-theme
+  :ensure t
+  :pin melpa
+  :config
+  (load-theme 'gruvbox-dark-hard t))
+
 (use-package gud
   :init
   (setq gdb-many-windows t)
@@ -302,18 +308,18 @@
   (yas-global-mode t))
 
 ;; Settings.
-(load-theme 'leuven)
+;; (load-theme 'leuven)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (if (eq system-type 'darwin)
-    (set-face-attribute 'default nil :font "Menlo:size=21")
+    (set-face-attribute 'default nil :font "Monaco:size=21")
   (set-face-attribute 'default nil :font "Deja Vu Sans Mono:size=20"))
 (setq-default cursor-type 'box)
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
-(set-face-background hl-line-face "gray")
+;; (set-face-background hl-line-face "gray")
 (set-face-foreground 'highlight nil)
 (setq ring-bell-function 'ignore)
 (column-number-mode)
