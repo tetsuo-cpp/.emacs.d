@@ -242,6 +242,10 @@
   :pin melpa
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package rust-mode
+  :ensure t
+  :pin melpa)
+
 (use-package slime
   :ensure t
   :pin melpa
