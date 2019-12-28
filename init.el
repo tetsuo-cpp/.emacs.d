@@ -311,6 +311,10 @@
   (setq yas-snippets-dir (concat user-emacs-directory "snippets"))
   (yas-global-mode t))
 
+(use-package yasnippet-snippets
+  :ensure t
+  :pin melpa)
+
 ;; Settings.
 ;; (load-theme 'leuven)
 (setq inhibit-startup-screen t)
