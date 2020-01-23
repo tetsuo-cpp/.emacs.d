@@ -315,6 +315,10 @@
   :ensure t
   :pin melpa)
 
+(use-package zig-mode
+  :ensure t
+  :pin melpa)
+
 ;; Settings.
 ;; (load-theme 'leuven)
 (setq inhibit-startup-screen t)
