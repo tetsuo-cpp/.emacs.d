@@ -80,6 +80,12 @@
   :ensure t
   :pin melpa)
 
+(use-package company
+  :ensure t
+  :pin melpa
+  :init
+  (setq company-tooltip-align-annotations t))
+
 (use-package compile
   :init
   (setq compilation-scroll-output t))
@@ -236,6 +242,14 @@
 (use-package protobuf-mode
   :ensure t
   :pin melpa)
+
+(use-package racer
+  :ensure t
+  :pin melpa
+  :hook ((rust-mode . racer-mode)
+         (racer-mode . eldoc-mode)
+         (racer-mode . company-mode))
+  :bind (("TAB" . 'company-indent-or-complete-common)))
 
 (use-package rainbow-delimiters
   :ensure t
