@@ -258,7 +258,8 @@
 
 (use-package rust-mode
   :ensure t
-  :pin melpa)
+  :pin melpa
+  :bind (("C-c f" . 'rust-format-buffer)))
 
 (use-package slime
   :ensure t
