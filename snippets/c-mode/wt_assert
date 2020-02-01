@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: wt_assert
+# key: wtas
+# --
+WT_ASSERT(session, $1);
