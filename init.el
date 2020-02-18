@@ -22,7 +22,8 @@
 
 (use-package bison-mode
   :ensure t
-  :pin melpa)
+  :pin melpa
+  :mode ("\\.lex\\'" . bison-mode))
 
 (use-package blacken
   :ensure t
