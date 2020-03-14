@@ -157,7 +157,13 @@
 
 (use-package go-mode
   :ensure t
-  :pin melpa)
+  :pin melpa
+  :hook ((go-mode . enable-gofmt))
+  :config
+  (defun enable-gofmt ()
+    (interactive)
+    "Enable GoFmt"
+    (local-set-key (kbd "C-c f") 'gofmt)))
 
 (use-package go-snippets
   :ensure t
