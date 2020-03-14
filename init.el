@@ -266,7 +266,12 @@
 (use-package rust-mode
   :ensure t
   :pin melpa
-  :bind (("C-c f" . 'rust-format-buffer)))
+  :hook ((rust-mode . enable-rustfmt))
+  :config
+  (defun enable-rustfmt ()
+    (interactive)
+    "Enable RustFmt"
+    (local-set-key (kbd "C-c f") 'rust-format-buffer)))
 
 (use-package slime
   :ensure t
