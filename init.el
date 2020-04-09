@@ -109,6 +109,10 @@
   :config
   (counsel-projectile-mode))
 
+(use-package d-mode
+  :ensure t
+  :pin melpa)
+
 (use-package dockerfile-mode
   :ensure t
   :pin melpa
