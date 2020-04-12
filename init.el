@@ -87,6 +87,13 @@
   :init
   (setq company-tooltip-align-annotations t))
 
+(use-package company-dcd
+  :ensure t
+  :pin melpa
+  :hook (d-mode . company-dcd-mode)
+  :bind (("M-." . 'company-dcd-goto-definition)
+         ("M-," . 'company-dcd-goto-def-pop-marker)))
+
 (use-package compile
   :init
   (setq compilation-scroll-output t))
