@@ -113,6 +113,18 @@
   :ensure t
   :pin melpa)
 
+(use-package dfmt
+  :ensure t
+  :pin melpa
+  ;; Defaults don't match my C-c f convention.
+  ;; :hook (d-mode-hook . dfmt-setup-keys)
+  :hook ((d-mode . enable-dfmt))
+  :config
+  (defun enable-dfmt ()
+    (interactive)
+    "Enable DFmt"
+    (local-set-key (kbd "C-c f") 'dfmt-buffer)))
+
 (use-package dockerfile-mode
   :ensure t
   :pin melpa
