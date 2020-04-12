@@ -125,7 +125,7 @@
   :pin melpa
   ;; Defaults don't match my C-c f convention.
   ;; :hook (d-mode-hook . dfmt-setup-keys)
-  :hook ((d-mode . enable-dfmt))
+  :hook (d-mode . enable-dfmt)
   :config
   (defun enable-dfmt ()
     (interactive)
@@ -181,7 +181,7 @@
 (use-package go-mode
   :ensure t
   :pin melpa
-  :hook ((go-mode . enable-gofmt))
+  :hook (go-mode . enable-gofmt)
   :config
   (defun enable-gofmt ()
     (interactive)
@@ -289,7 +289,7 @@
 (use-package rust-mode
   :ensure t
   :pin melpa
-  :hook ((rust-mode . enable-rustfmt))
+  :hook (rust-mode . enable-rustfmt)
   :config
   (defun enable-rustfmt ()
     (interactive)
