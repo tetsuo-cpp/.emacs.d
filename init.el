@@ -88,6 +88,7 @@
   (setq company-tooltip-align-annotations t))
 
 (use-package company-dcd
+  :disabled t
   :ensure t
   :pin melpa
   :hook (d-mode . company-dcd-mode)
