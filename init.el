@@ -12,6 +12,13 @@
 (require 'use-package)
 
 ;; Packages.
+(use-package ac-dcd
+  :ensure t
+  :pin melpa
+  :hook (d-mode . ac-dcd-setup)
+  :bind (("M-." . 'ac-dcd-goto-definition)
+         ("M-," . 'ac-dcd-goto-def-pop-marker)))
+
 (use-package avy
   :ensure t
   :pin melpa
@@ -86,14 +93,6 @@
   :pin melpa
   :init
   (setq company-tooltip-align-annotations t))
-
-(use-package company-dcd
-  :disabled t
-  :ensure t
-  :pin melpa
-  :hook (d-mode . company-dcd-mode)
-  :bind (("M-." . 'company-dcd-goto-definition)
-         ("M-," . 'company-dcd-goto-def-pop-marker)))
 
 (use-package compile
   :init
