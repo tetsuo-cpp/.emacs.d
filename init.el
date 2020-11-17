@@ -13,6 +13,7 @@
 
 ;; Packages.
 (use-package ac-dcd
+  :disabled t
   :ensure t
   :pin melpa
   :hook (d-mode . ac-dcd-setup)
@@ -226,6 +227,12 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
+(use-package modus-operandi-theme
+  :ensure t
+  :pin melpa
+  :config
+  (load-theme 'modus-operandi))
+
 (use-package oberon
   :ensure t
   :pin melpa
@@ -370,7 +377,6 @@
   :pin melpa)
 
 ;; Settings.
-(load-theme 'leuven)
 (setq inhibit-startup-screen t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
