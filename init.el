@@ -221,6 +221,22 @@
   :config
   (ivy-mode t))
 
+(use-package lsp-mode
+  :ensure t
+  :pin melpa
+  :hook ((zig-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection "zls")
+    :major-modes '(zig-mode)
+    :server-id 'zls)))
+
 (use-package magit
   :ensure t
   :pin melpa
