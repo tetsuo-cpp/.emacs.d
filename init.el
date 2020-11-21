@@ -138,6 +138,19 @@
   :pin melpa
   :mode "Dockerfile\\'")
 
+(use-package erc
+  :bind ("C-c e f" . (lambda ()(interactive)
+                       (erc :server "irc.freenode.net"
+                            :port "6667"
+                            :nick "tetsuo-cpp")))
+  ;; Map send line to C-c RET to avoid accidentally sending messages.
+  :bind (:map erc-mode-map
+              ("RET" . nil)
+              ("C-c RET" . 'erc-send-current-line))
+  :init
+  (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#zig")))
+  (setq erc-interpret-mirc-color t))
+
 (use-package eshell
   :init
   :hook (eshell-mode . (lambda ()
