@@ -259,6 +259,7 @@
 (use-package modus-themes
   :ensure t
   :pin melpa
+  :bind (("C-c t" . 'modus-themes-toggle))
   :config
   (load-theme 'modus-operandi))
 
