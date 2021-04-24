@@ -256,7 +256,7 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
-(use-package modus-operandi-theme
+(use-package modus-themes
   :ensure t
   :pin melpa
   :config
