@@ -44,7 +44,6 @@
     (local-set-key (kbd "C-c f") 'blacken-buffer)))
 
 (use-package c
-  :mode ("\\.h\\'" . c-mode)
   :hook (c-mode . wiredtiger-c-setup)
   :preface
   (defun wiredtiger-c-setup ()
@@ -54,6 +53,7 @@
     (c-set-offset 'arglist-intro '+)))
 
 (use-package c++
+  :mode ("\\.h\\'" . c++-mode)
   :hook (c++-mode . optiver-cpp-setup)
   :preface
   (defun optiver-cpp-setup ()
