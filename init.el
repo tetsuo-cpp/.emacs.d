@@ -408,7 +408,8 @@
 
 ;; Settings.
 (setq inhibit-startup-screen t)
-(scroll-bar-mode -1)
+(when (fboundp 'set-scroll-bar-mode)
+  (scroll-bar-mode -1))
 (menu-bar-mode -1)
 (if (eq system-type 'darwin)
     (set-face-attribute 'default nil :font "Monaco:size=21")
