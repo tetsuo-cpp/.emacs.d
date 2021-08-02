@@ -186,7 +186,8 @@
   (defun enable-ggtags ()
     "Enable GGTags."
     (ggtags-mode t))
-  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
+  (setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin/"))
+  (setenv "GTAGSFORCECPP" "1"))
 
 (use-package github-review
   :ensure t
