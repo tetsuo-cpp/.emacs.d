@@ -64,6 +64,12 @@
     (c-set-offset 'substatement-open 0)
     (c-set-offset 'inline-open 0)))
 
+(use-package ccls
+  :ensure t
+  :pin melpa
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
+
 (use-package clang-format
   :ensure t
   :pin melpa
@@ -94,6 +100,12 @@
   :pin melpa
   :init
   (setq company-tooltip-align-annotations t))
+
+(use-package company-lsp
+  :ensure t
+  :pin melpa
+  :after lsp-mode
+  :commands company-lsp)
 
 (use-package compile
   :init
@@ -177,7 +189,9 @@
   :init
   (setq geiser-active-implementations '(guile racket)))
 
+;; Try using CCLS with LSP mode instead since I'll be mainly working on CMake projects.
 (use-package ggtags
+  :disabled t
   :ensure t
   :pin melpa
   :hook ((c++-mode . enable-ggtags)
@@ -241,15 +255,20 @@
   :hook ((zig-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
-  :init
-  (setq lsp-keymap-prefix "C-c l")
   :config
   (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
   (lsp-register-client
    (make-lsp-client
     :new-connection (lsp-stdio-connection "zls")
     :major-modes '(zig-mode)
-    :server-id 'zls)))
+    :server-id 'zls))
+  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
+
+(use-package lsp-ui
+  :ensure t
+  :pin melpa
+  :after company-lsp
+  :commands lsp-ui-mode)
 
 (use-package magit
   :ensure t
