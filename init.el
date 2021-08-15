@@ -264,6 +264,15 @@
     :server-id 'zls))
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
 
+(use-package lsp-pyright
+  :ensure t
+  :pin melpa
+  :hook (python-mode . (lambda ()
+			 (require 'lsp-pyright)
+			 (lsp)))
+  :init
+  (setq lsp-pyright-venv-directory "env/"))
+
 (use-package lsp-ui
   :ensure t
   :pin melpa
