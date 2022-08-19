@@ -150,6 +150,28 @@
   :pin melpa
   :mode "Dockerfile\\'")
 
+(use-package ef-themes
+  :ensure t
+  :pin melpa
+  :bind (("C-c t" . 'toggle-themes))
+  :init
+  (setq tetsuo-dark-mode t)
+  :config
+  (defun toggle-themes ()
+    (interactive)
+    (mapc #'disable-theme custom-enabled-themes)
+    ;; Can't figure out how to get `ef-themes-load-random' working
+    (if tetsuo-dark-mode
+        (progn
+          (load-theme 'ef-day)
+          (setq tetsuo-dark-mode nil))
+      (progn
+        (load-theme 'ef-autumn)
+        (setq tetsuo-dark-mode t)))
+    )
+  (toggle-themes)
+  )
+
 (use-package erc
   :bind ("C-c e f" . (lambda ()(interactive)
                        (erc :server "irc.freenode.net"
@@ -290,12 +312,12 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
-(use-package modus-themes
-  :ensure t
-  :pin melpa
-  :bind (("C-c t" . 'modus-themes-toggle))
-  :config
-  (load-theme 'modus-operandi))
+;; (use-package modus-themes
+;;   :ensure t
+;;   :pin melpa
+;;   :bind (("C-c t" . 'modus-themes-toggle))
+;;   :config
+;;   (load-theme 'modus-operandi))
 
 (use-package oberon
   :ensure t
