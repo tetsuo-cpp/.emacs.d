@@ -267,6 +267,7 @@
 (use-package lsp-pyright
   :ensure t
   :pin melpa
+  :after exec-path-from-shell
   :hook (python-mode . (lambda ()
 			 (require 'lsp-pyright)
 			 (lsp)))
