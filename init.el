@@ -280,6 +280,10 @@
   :after company-lsp
   :commands lsp-ui-mode)
 
+(use-package lua-mode
+  :ensure t
+  :pin melpa)
+
 (use-package magit
   :ensure t
   :pin melpa
