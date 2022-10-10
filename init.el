@@ -31,7 +31,7 @@
 (use-package bison-mode
   :ensure t
   :pin melpa
-  :mode ("\\.lex\\'" "\\.grm\\'"))
+  :mode ("\\.l\\'" "\\.y\\'"))
 
 (use-package blacken
   :ensure t
