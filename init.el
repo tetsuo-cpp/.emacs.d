@@ -166,7 +166,7 @@
           (load-theme 'ef-day)
           (setq tetsuo-dark-mode nil))
       (progn
-        (load-theme 'ef-autumn)
+        (load-theme 'ef-night)
         (setq tetsuo-dark-mode t)))
     )
   (toggle-themes)
