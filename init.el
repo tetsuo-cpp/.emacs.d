@@ -98,6 +98,7 @@
 (use-package company
   :ensure t
   :pin melpa
+  :hook (scala-mode . company-mode)
   :init
   (setq company-tooltip-align-annotations t))
 
@@ -271,10 +272,15 @@
   :config
   (ivy-mode t))
 
+(use-package lsp-metals
+  :ensure t
+  :pin melpa)
+
 (use-package lsp-mode
   :ensure t
   :pin melpa
   :hook ((zig-mode . lsp)
+         (scala-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
@@ -388,6 +394,13 @@
     (interactive)
     "Enable RustFmt"
     (local-set-key (kbd "C-c f") 'rust-format-buffer)))
+
+
+;; Enable scala-mode for highlighting, indentation and motion commands
+(use-package scala-mode
+  :ensure t
+  :pin melpa
+  :interpreter ("scala" . scala-mode))
 
 (use-package slime
   :ensure t
