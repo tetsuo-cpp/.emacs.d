@@ -164,10 +164,10 @@
     ;; Can't figure out how to get `ef-themes-load-random' working
     (if tetsuo-dark-mode
         (progn
-          (load-theme 'ef-day)
+          (load-theme 'ef-spring)
           (setq tetsuo-dark-mode nil))
       (progn
-        (load-theme 'ef-night)
+        (load-theme 'ef-autumn)
         (setq tetsuo-dark-mode t)))
     )
   (toggle-themes)
