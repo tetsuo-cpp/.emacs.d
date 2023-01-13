@@ -318,6 +318,13 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
+(use-package mastodon
+  :ensure t
+  :pin melpa
+  :init
+  (setq mastodon-instance-url "https://infosec.exchange"
+        mastodon-active-user "tetsuo_cpp"))
+
 ;; (use-package modus-themes
 ;;   :ensure t
 ;;   :pin melpa
