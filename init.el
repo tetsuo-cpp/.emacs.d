@@ -175,6 +175,13 @@
   (toggle-themes)
   )
 
+(use-package elfeed
+  :ensure t
+  :pin melpa
+  :init
+  (setq elfeed-feeds
+        '("https://danluu.com/atom.xml")))
+
 (use-package erc
   :bind ("C-c e f" . (lambda ()(interactive)
                        (erc :server "irc.libera.chat"
