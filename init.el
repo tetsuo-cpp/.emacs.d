@@ -177,7 +177,7 @@
 
 (use-package erc
   :bind ("C-c e f" . (lambda ()(interactive)
-                       (erc :server "irc.freenode.net"
+                       (erc :server "irc.libera.chat"
                             :port "6667"
                             :nick "tetsuo-cpp")))
   ;; Map send line to C-c RET to avoid accidentally sending messages.
