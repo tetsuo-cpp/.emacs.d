@@ -100,10 +100,12 @@
   :pin melpa
   :hook (scala-mode . company-mode)
   :init
-  (setq company-tooltip-align-annotations t))
+  (setq company-tooltip-align-annotations t)
+  :config
+  (setq lsp-completion-provider :capf))
 
 (use-package company-lsp
-  :ensure t
+  :disabled t
   :pin melpa
   :after lsp-mode
   :commands company-lsp)
@@ -281,6 +283,8 @@
   :pin melpa
   :hook ((zig-mode . lsp)
          (scala-mode . lsp)
+         (rust-mode . lsp)
+         (go-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
@@ -380,6 +384,7 @@
   :pin melpa)
 
 (use-package racer
+  :disabled t
   :ensure t
   :pin melpa
   :hook ((rust-mode . racer-mode)
