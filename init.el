@@ -64,12 +64,6 @@
     (c-set-offset 'substatement-open 0)
     (c-set-offset 'inline-open 0)))
 
-(use-package ccls
-  :ensure t
-  :pin melpa
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp))))
-
 (use-package clang-format
   :ensure t
   :pin melpa
@@ -174,6 +168,13 @@
     )
   (toggle-themes)
   )
+
+(use-package eglot
+  :ensure t
+  :hook ((c++-mode . eglot-ensure)
+         (c-mode . eglot-ensure))
+  :config
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd")))
 
 (use-package elfeed
   :ensure t
