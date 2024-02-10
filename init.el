@@ -147,28 +147,6 @@
   :pin melpa
   :mode "Dockerfile\\'")
 
-(use-package ef-themes
-  :ensure t
-  :pin melpa
-  :bind (("C-c t" . 'toggle-themes))
-  :init
-  (setq tetsuo-dark-mode t)
-  :config
-  (defun toggle-themes ()
-    (interactive)
-    (mapc #'disable-theme custom-enabled-themes)
-    ;; Can't figure out how to get `ef-themes-load-random' working
-    (if tetsuo-dark-mode
-        (progn
-          (load-theme 'modus-operandi)
-          (setq tetsuo-dark-mode nil))
-      (progn
-        (load-theme 'modus-vivendi)
-        (setq tetsuo-dark-mode t)))
-    )
-  (toggle-themes)
-  )
-
 (use-package eglot
   :ensure t
   :hook ((c++-mode . eglot-ensure)
@@ -411,6 +389,30 @@
 ;;   :config
 ;;   (load-theme 'modus-operandi))
 
+(use-package nofrils-acme-theme
+  :ensure t
+  :pin melpa
+  :bind (("C-c t" . 'toggle-themes))
+  :init
+  (setq tetsuo-dark-mode t)
+  :config
+  (defun toggle-themes ()
+    (interactive)
+    (mapc #'disable-theme custom-enabled-themes)
+    ;; Can't figure out how to get `ef-themes-load-random' working
+    (if tetsuo-dark-mode
+        (progn
+          (load-theme 'nofrils-acme)
+          (set-face-background hl-line-face "gray")
+          (setq tetsuo-dark-mode nil))
+      (progn
+        (load-theme 'nofrils-dark)
+        (set-face-background hl-line-face "brightblack")
+        (setq tetsuo-dark-mode t)))
+    )
+  (toggle-themes)
+  )
+
 (use-package oberon
   :ensure t
   :pin melpa
@@ -574,7 +576,6 @@
 (set-cursor-color "red")
 (blink-cursor-mode -1)
 (global-hl-line-mode t)
-(set-face-background hl-line-face "gray")
 (set-face-foreground 'highlight nil)
 (setq ring-bell-function 'ignore)
 (column-number-mode)
