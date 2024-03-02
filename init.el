@@ -228,6 +228,7 @@
           "https://jeremykun.com/feed/"
           "https://sachachua.com/blog/feed/atom/"
           "https://karthinks.com/index.xml"
+          "https://research.swtch.com/feed.atom"
           "https://tetsuo.sh/atom.xml")))
 
 (use-package erc
