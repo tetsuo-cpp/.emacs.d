@@ -106,7 +106,9 @@
 
 (use-package compile
   :init
-  (setq compilation-scroll-output t))
+  (setq compilation-scroll-output t)
+  :config
+  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter))
 
 (use-package counsel
   :ensure t
