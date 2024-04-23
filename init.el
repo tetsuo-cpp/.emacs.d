@@ -229,6 +229,8 @@
           "https://sachachua.com/blog/feed/atom/"
           "https://karthinks.com/index.xml"
           "https://research.swtch.com/feed.atom"
+          "https://kentosec.com/feed/"
+          "https://www.nayuki.io/rss20.xml"
           "https://tetsuo.sh/atom.xml")))
 
 (use-package erc
