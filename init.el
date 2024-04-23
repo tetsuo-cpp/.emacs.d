@@ -245,7 +245,8 @@
               ("C-c RET" . 'erc-send-current-line))
   :init
   (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#zig")))
-  (setq erc-interpret-mirc-color t))
+  (setq erc-interpret-mirc-color t)
+  (setq erc-hide-list '("JOIN" "PART" "QUIT")))
 
 (use-package eshell
   :init
