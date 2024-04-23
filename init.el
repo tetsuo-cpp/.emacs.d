@@ -151,8 +151,9 @@
 
 (use-package eglot
   :ensure t
-  :hook ((c++-mode . eglot-ensure)
-         (c-mode   . eglot-ensure))
+  :hook ((c++-mode  . eglot-ensure)
+         (c-mode    . eglot-ensure)
+         (rust-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd")))
 
@@ -341,7 +342,6 @@
   :pin melpa
   :hook ((zig-mode . lsp)
          (scala-mode . lsp)
-         (rust-mode . lsp)
          (go-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
@@ -465,30 +465,18 @@
   :ensure t
   :pin melpa)
 
-(use-package racer
-  :disabled t
-  :ensure t
-  :pin melpa
-  :hook ((rust-mode . racer-mode)
-         (racer-mode . eldoc-mode)
-         (racer-mode . company-mode))
-  :bind (("TAB" . 'company-indent-or-complete-common)))
-
 (use-package rainbow-delimiters
   :ensure t
   :pin melpa
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package rust-mode
+(use-package rustic
   :ensure t
   :pin melpa
-  :hook (rust-mode . enable-rustfmt)
   :config
-  (defun enable-rustfmt ()
-    (interactive)
-    "Enable RustFmt"
-    (local-set-key (kbd "C-c f") 'rust-format-buffer)))
-
+  (setq rustic-lsp-client 'eglot)
+  :custom
+  (rustic-analyzer-command '("rustup" "run" "stable" "rust-analyzer")))
 
 ;; Enable scala-mode for highlighting, indentation and motion commands
 (use-package scala-mode
