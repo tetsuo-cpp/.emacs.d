@@ -604,3 +604,4 @@
 (setq load-path
       (cons (expand-file-name (concat user-emacs-directory "llvm")) load-path))
 (require 'llvm-mode)
+(require 'mlir-mode)
