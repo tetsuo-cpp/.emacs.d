@@ -456,36 +456,12 @@
   (setq mastodon-instance-url "https://infosec.exchange"
         mastodon-active-user "tetsuo_cpp"))
 
-;; (use-package modus-themes
-;;   :ensure t
-;;   :pin melpa
-;;   :bind (("C-c t" . 'modus-themes-toggle))
-;;   :config
-;;   (load-theme 'modus-operandi))
-
-(use-package nofrils-acme-theme
+(use-package modus-themes
   :ensure t
   :pin melpa
-  :bind (("C-c t" . 'toggle-themes))
-  :init
-  (setq tetsuo-dark-mode t)
+  :bind (("C-c t" . 'modus-themes-toggle))
   :config
-  (defun toggle-themes ()
-    (interactive)
-    (mapc #'disable-theme custom-enabled-themes)
-    ;; Can't figure out how to get `ef-themes-load-random' working
-    (if tetsuo-dark-mode
-        (progn
-          (load-theme 'nofrils-acme)
-          (set-face-background hl-line-face "gray")
-          (setq tetsuo-dark-mode nil))
-      (progn
-        (load-theme 'nofrils-dark)
-        (set-face-background hl-line-face "brightblack")
-        (setq tetsuo-dark-mode t)))
-    )
-  (toggle-themes)
-  )
+  (load-theme 'modus-operandi))
 
 (use-package oberon
   :ensure t
