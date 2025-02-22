@@ -195,9 +195,10 @@
   :ensure t
   :hook ((c++-mode  . eglot-ensure)
          (c-mode    . eglot-ensure)
-         (rust-mode . eglot-ensure))
+         (rust-mode . eglot-ensure)
+         (zig-mode  . eglot-ensure))
   :config
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd")))
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd" (zig-mode) "zls")))
 
 (use-package elfeed
   :ensure t
@@ -293,6 +294,7 @@
           "https://marcelgarus.dev/rss"
           "https://irrationalanalysis.substack.com/feed"
           "https://charity.wtf/feed/"
+          "https://farena.in/feed.xml"
           "https://tetsuo.sh/atom.xml")))
 
 (use-package erc
@@ -410,8 +412,7 @@
 (use-package lsp-mode
   :ensure t
   :pin melpa
-  :hook ((zig-mode . lsp)
-         (scala-mode . lsp)
+  :hook ((scala-mode . lsp)
          (go-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
