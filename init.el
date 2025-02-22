@@ -28,6 +28,11 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; Load secrets if they exist
+(let ((secrets-file (expand-file-name "secrets.el" user-emacs-directory)))
+  (when (file-exists-p secrets-file)
+    (load secrets-file)))
+
 ;; Packages.
 (use-package ac-dcd
   :disabled t
@@ -40,11 +45,6 @@
 (use-package aidermacs
   :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
   :config
-  ;; Load secrets if they exist
-  (let ((secrets-file (expand-file-name "secrets.el" user-emacs-directory)))
-    (when (file-exists-p secrets-file)
-      (load secrets-file)))
-
   ;; Claude Sonnet 3.5
   (setq aidermacs-default-model "anthropic/claude-3-5-sonnet-20241022")
   (when (boundp 'aidermacs-anthropic-api-key)
@@ -296,15 +296,23 @@
 
 (use-package erc
   :bind ("C-c e f" . (lambda ()(interactive)
-                       (erc :server "irc.libera.chat"
-                            :port "6667"
-                            :nick "tetsuo-cpp")))
+                       (erc-tls :server "bnc.irccloud.com"
+                                :port "6697"
+                                :nick "tetsuo-cpp"
+                                :password erc-libera-password)
+                       (erc-tls :server "bnc.irccloud.com"
+                                :port "6697"
+                                :nick "tetsuo-cpp"
+                                :password erc-darkscience-password)
+                       (erc-tls :server "bnc.irccloud.com"
+                                :port "6697"
+                                :nick "tetsuo-cpp"
+                                :password erc-oftc-password)))
   ;; Map send line to C-c RET to avoid accidentally sending messages.
   :bind (:map erc-mode-map
               ("RET" . nil)
               ("C-c RET" . 'erc-send-current-line))
   :init
-  (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#zig")))
   (setq erc-interpret-mirc-color t)
   (setq erc-hide-list '("JOIN" "PART" "QUIT")))
 
