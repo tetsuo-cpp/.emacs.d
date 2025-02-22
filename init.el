@@ -46,15 +46,16 @@
   :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
   :config
   ;; Claude Sonnet 3.5
-  (setq aidermacs-default-model "anthropic/claude-3-5-sonnet-20241022")
-  (when (boundp 'aidermacs-anthropic-api-key)
-    (setenv "ANTHROPIC_API_KEY" aidermacs-anthropic-api-key))
+  ;; (setq aidermacs-default-model "anthropic/claude-3-5-sonnet-20241022")
+  ;; (when (boundp 'aidermacs-anthropic-api-key)
+  ;;   (setenv "ANTHROPIC_API_KEY" aidermacs-anthropic-api-key))
 
   ;; Hyperbolic DeepSeek V3
-  ;; (setenv "OPENAI_API_BASE" "https://api.hyperbolic.xyz/v1/")
+  (setq aidermacs-default-model "openai/deepseek-ai/DeepSeek-V3")
+  (setenv "OPENAI_API_BASE" "https://api.hyperbolic.xyz/v1/")
   ;; Optional OpenAI key from secrets
-  ;; (when (boundp 'aidermacs-hyperbolic-api-key)
-  ;;   (setenv "OPENAI_API_KEY" aidermacs-hyperbolic-api-key))
+  (when (boundp 'aidermacs-hyperbolic-api-key)
+    (setenv "OPENAI_API_KEY" aidermacs-hyperbolic-api-key))
 
   (global-set-key (kbd "C-c a") 'aidermacs-transient-menu)
   ;; (setq aidermacs-auto-commits t)
