@@ -11,6 +11,23 @@
   (package-install 'use-package))
 (require 'use-package)
 
+;; Bootstrap straight.
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
 ;; Packages.
 (use-package ac-dcd
   :disabled t
@@ -19,6 +36,30 @@
   :hook (d-mode . ac-dcd-setup)
   :bind (("M-." . 'ac-dcd-goto-definition)
          ("M-," . 'ac-dcd-goto-def-pop-marker)))
+
+(use-package aidermacs
+  :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
+  :config
+  ;; Load secrets if they exist
+  (let ((secrets-file (expand-file-name "secrets.el" user-emacs-directory)))
+    (when (file-exists-p secrets-file)
+      (load secrets-file)))
+
+  ;; Claude Sonnet 3.5
+  (setq aidermacs-default-model "anthropic/claude-3-5-sonnet-20241022")
+  (when (boundp 'aidermacs-anthropic-api-key)
+    (setenv "ANTHROPIC_API_KEY" aidermacs-anthropic-api-key))
+
+  ;; Hyperbolic DeepSeek V3
+  ;; (setenv "OPENAI_API_BASE" "https://api.hyperbolic.xyz/v1/")
+  ;; Optional OpenAI key from secrets
+  ;; (when (boundp 'aidermacs-hyperbolic-api-key)
+  ;;   (setenv "OPENAI_API_KEY" aidermacs-hyperbolic-api-key))
+
+  (global-set-key (kbd "C-c a") 'aidermacs-transient-menu)
+  ;; (setq aidermacs-auto-commits t)
+  ;; (setq aidermacs-use-architect-mode t)
+  )
 
 (use-package avy
   :ensure t
