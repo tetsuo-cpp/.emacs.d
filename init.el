@@ -198,7 +198,8 @@
          (rust-mode . eglot-ensure)
          (zig-mode  . eglot-ensure))
   :config
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd" (zig-mode) "zls")))
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  (add-to-list 'eglot-server-programs '(zig-mode "zls")))
 
 (use-package elfeed
   :ensure t
