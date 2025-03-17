@@ -43,7 +43,9 @@
          ("M-," . 'ac-dcd-goto-def-pop-marker)))
 
 (use-package aidermacs
-  :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
+  :ensure t
+  :pin melpa
+  :bind (("C-c a" . aidermacs-transient-menu))
   :config
   ;; Claude Sonnet 3.5
   ;; (setq aidermacs-default-model "anthropic/claude-3-5-sonnet-20241022")
@@ -57,8 +59,7 @@
   (when (boundp 'aidermacs-hyperbolic-api-key)
     (setenv "OPENAI_API_KEY" aidermacs-hyperbolic-api-key))
 
-  (global-set-key (kbd "C-c a") 'aidermacs-transient-menu)
-  ;; (setq aidermacs-auto-commits t)
+  (setq aidermacs-auto-commits t)
   ;; (setq aidermacs-use-architect-mode t)
   )
 
