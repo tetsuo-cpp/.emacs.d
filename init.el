@@ -465,6 +465,20 @@
   :bind (("C-x g"   . 'magit-status)
          ("C-x M-g" . 'magit-dispatch-popup)))
 
+(use-package markdown-mode
+  :ensure t
+  :mode (("\\.md\\'" . gfm-mode))
+  :config
+  (setq markdown-command "pandoc -f gfm --standalone --highlight-style=pygments"))
+
+(use-package markdown-preview-mode
+  :ensure t
+  :after markdown-mode
+  :config
+  (setq markdown-preview-stylesheets
+        (list "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css"
+              "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css")))
+
 (use-package mastodon
   :ensure t
   :pin melpa
