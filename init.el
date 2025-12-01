@@ -301,6 +301,16 @@
           "https://harper.blog/index.xml"
           "https://tetsuo.sh/atom.xml")))
 
+(use-package emigo
+  :straight (:host github :repo "MatthewZMD/emigo" :files (:defaults "*.py" "*.el"))
+  :config
+  (emigo-enable) ;; Starts the background process automatically
+  :custom
+  (emigo-model "openai/deepseek-ai/DeepSeek-V3")
+  (emigo-base-url "https://api.hyperbolic.xyz/v1/")
+  (emigo-api-key aidermacs-hyperbolic-api-key)
+  (emigo-python-command "/Users/alexander/.emacs.d/emigo-env/bin/python"))
+
 (use-package erc
   :bind ("C-c e f" . (lambda ()(interactive)
                        (erc-tls :server "bnc.irccloud.com"
