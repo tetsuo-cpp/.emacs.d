@@ -297,6 +297,8 @@
           "https://irrationalanalysis.substack.com/feed"
           "https://charity.wtf/feed/"
           "https://farena.in/feed.xml"
+          "https://binary.ninja/feed.xml"
+          "https://harper.blog/index.xml"
           "https://tetsuo.sh/atom.xml")))
 
 (use-package erc
