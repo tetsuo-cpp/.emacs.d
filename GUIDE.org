@@ -1,0 +1,477 @@
+#+TITLE: Emacs Configuration Guide
+#+STARTUP: overview
+
+* Quick Reference — Keybinding Table
+
+Custom bindings from init.el and critical package defaults.
+
+** Custom Bindings
+
+| Key       | Command                | Context       |
+|-----------+------------------------+---------------|
+| =C-s=     | consult-line           | Search buffer |
+| =C-x b=   | consult-buffer         | Switch buffer |
+| =C-c k=   | consult-ripgrep        | Search files  |
+| =C-c g=   | consult-git-grep       | Search git    |
+| =C-c j=   | consult-git-grep       | Search git    |
+| =M-g g=   | consult-goto-line      | Go to line    |
+| =C-.=     | embark-act             | Context menu  |
+| =C-;=     | embark-dwim            | Default action|
+| =C-h B=   | embark-bindings        | Show bindings |
+| =C-c p=   | project prefix map     | Project       |
+| =C-c c=   | avy-goto-char-timer    | Jump to char  |
+| =C-c s=   | avy-goto-line          | Jump to line  |
+| =C-c f=   | apheleia-format-buffer | Format code   |
+| =C-x g=   | magit-status           | Git status    |
+| =C-c e=   | elfeed                 | RSS reader    |
+| =C-c t=   | modus-themes-toggle    | Toggle theme  |
+| =C-c I=   | find-user-init-file    | Open init.el  |
+| =S-arrows= | windmove              | Switch window |
+
+** Eglot Bindings (active in LSP buffers)
+
+| Key       | Command              |
+|-----------+----------------------|
+| =M-.=     | xref-find-definitions|
+| =M-?=     | xref-find-references |
+| =M-,=     | xref-go-back         |
+| =C-M-.=   | xref-find-apropos    |
+| =C-c C-r= | eglot-rename         |
+| =C-c C-a= | eglot-code-actions   |
+
+** Flymake Bindings (active when flymake is on)
+
+| Key       | Command                         |
+|-----------+---------------------------------|
+| =C-c ! n= | flymake-goto-next-error         |
+| =C-c ! p= | flymake-goto-prev-error         |
+| =C-c ! l= | flymake-show-buffer-diagnostics |
+
+* Searching and Finding Things
+
+** Buffer Search
+
+=C-s= runs =consult-line= — interactive search within the current buffer with
+live preview. Type your query; matching lines appear in the minibuffer.
+
+** Project-Wide Search
+
+- =C-c k= — =consult-ripgrep=: search file contents across the project using ripgrep.
+- =C-c g= / =C-c j= — =consult-git-grep=: same idea but using git-grep (only tracked files).
+
+** Orderless Matching
+
+The minibuffer uses =orderless= completion. Type space-separated tokens and they
+match in any order:
+
+: buf init  →  matches "init-buffer" and "buffer-init" and "initialize-buffer"
+
+For file completion, basic and partial-completion styles also apply (so =~/.em=
+still expands to =~/.emacs.d/=).
+
+** The wgrep Workflow (Search and Replace Across Files)
+
+1. Run =C-c k= (consult-ripgrep) and type your search term.
+2. Press =C-.= (embark-act) then =E= (or use =embark-export=) to export results to a grep buffer.
+3. Press =C-c C-p= (or =e=) to enter =wgrep-change-group-mode= — the buffer becomes editable.
+4. Make your edits (regular editing, query-replace, etc.).
+5. Press =C-c C-e= to apply changes. With =wgrep-auto-save-buffer= set to =t=, files save automatically.
+
+** Go to Line
+
+=M-g g= / =M-g M-g= — =consult-goto-line= with live preview.
+
+* Projects (project.el)
+
+| Key       | Command                         | Description            |
+|-----------+---------------------------------+------------------------|
+| =C-c p f= | project-find-file               | Find file in project   |
+| =C-c p g= | project-find-regexp             | Grep in project        |
+| =C-c p d= | project-find-dir                | Find directory         |
+| =C-c p D= | project-dired                   | Dired at project root  |
+| =C-c p b= | project-switch-to-buffer        | Switch project buffer  |
+| =C-c p s= | project-shell                   | Shell at project root  |
+| =C-c p e= | project-eshell                  | Eshell at project root |
+| =C-c p c= | project-compile                 | Compile                |
+| =C-c p k= | project-kill-buffers            | Kill project buffers   |
+| =C-c p p= | project-switch-project          | Switch project         |
+| =C-c p != | project-shell-command           | Run shell command      |
+| =C-c p &= | project-async-shell-command     | Async shell command    |
+| =C-c p x= | project-execute-extended-command| M-x scoped to project  |
+
+A project is detected automatically by VCS root (=.git=), or you can add a
+=.project= file. Use =C-c p p= to switch between known projects.
+
+* Code Intelligence (Eglot + Tree-sitter + Apheleia)
+
+** Eglot Navigation
+
+Eglot starts automatically (=eglot-ensure=) in C, C++, Rust, Zig, Python, and Go buffers.
+
+| Key       | Action                            |
+|-----------+-----------------------------------|
+| =M-.=     | Jump to definition                |
+| =M-?=     | Find all references               |
+| =M-,=     | Jump back                         |
+| =C-M-.=   | Find symbol by name (apropos)     |
+
+** Eglot Refactoring
+
+| Key       | Action                            |
+|-----------+-----------------------------------|
+| =C-c C-r= | Rename symbol under cursor        |
+| =C-c C-a= | Code actions (quick fixes, etc.)  |
+
+** Flymake Diagnostics
+
+Eglot reports errors/warnings through flymake:
+
+| Key       | Action                               |
+|-----------+--------------------------------------|
+| =C-c ! n= | Next diagnostic                      |
+| =C-c ! p= | Previous diagnostic                  |
+| =C-c ! l= | List all buffer diagnostics          |
+| =M-x flymake-show-project-diagnostics= | All project diagnostics |
+
+** Eldoc
+
+Hover documentation appears automatically in the echo area. For a dedicated
+buffer: =M-x eldoc-doc-buffer= (or =C-h .= in some configurations).
+
+** Managing Eglot
+
+- =M-x eglot= — start/restart server manually
+- =M-x eglot-shutdown= — stop the server
+- =M-x eglot-events-buffer= — view LSP protocol messages (for debugging)
+- =M-x eglot-stderr-buffer= — view server stderr
+
+** Tree-sitter Structural Navigation
+
+With tree-sitter modes (=-ts-mode=), standard sexp/defun commands become
+structure-aware:
+
+| Key       | Action                  |
+|-----------+-------------------------|
+| =C-M-f=   | Forward sexp/node       |
+| =C-M-b=   | Backward sexp/node      |
+| =C-M-u=   | Up to parent node       |
+| =C-M-d=   | Down into child node    |
+| =C-M-a=   | Beginning of defun      |
+| =C-M-e=   | End of defun            |
+
+To explore the syntax tree interactively: =M-x treesit-explore-mode=.
+
+** Formatting
+
+- =C-c f= — =apheleia-format-buffer= (runs the configured external formatter asynchronously)
+- =M-x eglot-format-buffer= — format via the LSP server
+
+Apheleia runs on save automatically (=apheleia-global-mode= is enabled). It
+picks the right formatter per major mode (clang-format, black, gofmt, rustfmt,
+zig fmt, etc.).
+
+* In-Buffer Completion (Corfu + Cape)
+
+** Popup Behavior
+
+Corfu pops up automatically after typing 2 characters (=corfu-auto-prefix=)
+with a 0.2 second delay (=corfu-auto-delay=). Works in both GUI and terminal.
+
+** Keybindings in the Completion Popup
+
+| Key   | Action                    |
+|-------+---------------------------|
+| =M-n= | Next candidate             |
+| =M-p= | Previous candidate         |
+| =RET= | Insert selected candidate  |
+| =TAB= | Complete common prefix     |
+| =C-g= | Dismiss popup              |
+
+** Completion Sources
+
+Completion-at-point sources are layered (first match wins):
+
+1. *LSP* (via eglot) — symbols, methods, imports
+2. *dabbrev* (via cape-dabbrev) — words from open buffers
+3. *File paths* (via cape-file) — triggered by =./= or =~/=
+
+* Git (Magit)
+
+=C-x g= opens the Magit status buffer.
+
+** Essential Status Buffer Keys
+
+| Key   | Action                          |
+|-------+---------------------------------|
+| =s=   | Stage file/hunk at point        |
+| =u=   | Unstage file/hunk at point      |
+| =c c= | Commit (opens message buffer)   |
+| =P p= | Push                            |
+| =F p= | Pull (fetch + merge)            |
+| =b b= | Checkout branch                 |
+| =b c= | Create and checkout new branch  |
+| =l l= | Log for current branch          |
+| =d d= | Diff                            |
+| =r i= | Interactive rebase              |
+| =z z= | Stash (including untracked)     |
+| =z p= | Pop stash                       |
+| =g=   | Refresh status buffer           |
+| =q=   | Quit status buffer              |
+| =?=   | Show all Magit keybindings      |
+
+** Useful Magit Commands
+
+- =M-x magit-blame= (or =C-c M-g b= in a file buffer) — git blame with
+  interactive navigation.
+- =M-x magit-log-buffer-file= (or =C-c M-g l=) — log for the current file.
+
+** Staging Hunks
+
+In the status buffer, move point into a diff hunk and press =s= to stage just
+that hunk (not the whole file). Use =C-SPC= to select a region within a hunk
+for even finer control.
+
+* Navigation and Movement
+
+** Avy (Jump to Visible Text)
+
+| Key     | Action                                          |
+|---------+-------------------------------------------------|
+| =C-c c= | Type chars, then select from highlighted matches |
+| =C-c s= | Jump to a line (shows line labels)               |
+
+With =avy-goto-char-timer=: type one or more characters, pause briefly, and avy
+highlights all matches. Press the shown letter(s) to jump.
+
+** Window Management
+
+| Key         | Action              |
+|-------------+---------------------|
+| =S-left=    | Move to left window  |
+| =S-right=   | Move to right window |
+| =S-up=      | Move to upper window |
+| =S-down=    | Move to lower window |
+| =C-x 0=     | Delete this window   |
+| =C-x 1=     | Delete other windows |
+| =C-x 2=     | Split below          |
+| =C-x 3=     | Split right          |
+
+** Buffer Switching
+
+=C-x b= runs =consult-buffer= — shows buffers, recent files, and bookmarks
+with live preview. Type to filter with orderless matching.
+
+* Embark (Contextual Actions)
+
+** Core Bindings
+
+| Key     | Action                                         |
+|---------+------------------------------------------------|
+| =C-.=   | embark-act: show actions for thing at point     |
+| =C-;=   | embark-dwim: run the default action immediately |
+| =C-h B= | embark-bindings: browse all embark key bindings |
+
+** How embark-act Works
+
+Press =C-.= on any target (a symbol, file, URL, buffer name, etc.) and a menu
+of contextual actions appears. For example:
+
+- On a *file path* → open, rename, delete, copy
+- On a *symbol* → find definition, describe, grep
+- On a *URL* → browse, eww
+- In a *minibuffer candidate* → act without closing the minibuffer
+
+** Key Workflow: Export to Writable Buffer
+
+During any consult search (=C-c k=, =C-c g=, =C-s=):
+
+1. =C-.= then =E= — export matching results to a dedicated buffer
+2. In a grep-result buffer, enter =wgrep-change-group-mode= (=C-c C-p=)
+3. Edit, then =C-c C-e= to apply across all files
+
+This is the main way to do multi-file search-and-replace.
+
+* Compilation and Debugging
+
+** Compilation
+
+| Key           | Action                     |
+|---------------+----------------------------|
+| =M-x compile= | Run a compile command       |
+| =C-c p c=     | Compile in project context  |
+| =g=           | Recompile (in compile buf)  |
+| =M-g n=       | Next error                  |
+| =M-g p=       | Previous error              |
+
+Output scrolls automatically (=compilation-scroll-output= is =t=). ANSI color
+codes are rendered properly.
+
+** Debugging (GDB)
+
+=M-x gdb= launches GDB. With =gdb-many-windows= enabled (it is), you get a
+multi-pane layout: source, GDB prompt, locals, breakpoints, I/O, and stack.
+
+GUD tooltip mode is active — hover over a variable in the source buffer to see
+its value.
+
+Standard GUD bindings in the source buffer:
+
+| Key       | Action          |
+|-----------+-----------------|
+| =C-x C-a C-b= | Set breakpoint  |
+| =C-x C-a C-d= | Remove breakpoint|
+| =C-x C-a C-s= | Step            |
+| =C-x C-a C-n= | Next            |
+| =C-x C-a C-r= | Continue        |
+
+* RSS Feeds (Elfeed)
+
+=C-c e= opens elfeed.
+
+** Elfeed Buffer Keys
+
+| Key   | Action                          |
+|-------+---------------------------------|
+| =G=   | Fetch new entries from all feeds |
+| =RET= | Open entry                       |
+| =b=   | Open entry in browser            |
+| =r=   | Mark as read                     |
+| =u=   | Mark as unread                   |
+| =s=   | Update filter                    |
+| =q=   | Quit elfeed                      |
+
+** Filter Syntax
+
+Type =s= to edit the filter. Examples:
+
+: @6-months-ago +compilers +unread
+: @1-year-ago +systems
+: +security +unread
+
+Tokens: =@TIME-AGO=, =+TAG= (include), =-TAG= (exclude), =#N= (min count),
+=REGEX= (match title).
+
+** Managing Feeds
+
+Feeds live in =~/.emacs.d/feeds.org= (loaded by =elfeed-org=). The structure:
+
+- Top-level headings are categories
+- Org tags on headings become elfeed tags
+- Second-level headings are feed URLs
+
+Example:
+#+begin_example
+,* Compilers & Programming Languages  :compilers:
+,** https://blog.llvm.org/index.xml
+,** https://eli.thegreenplace.net/feeds/all.atom.xml
+#+end_example
+
+To add a feed: add a URL as a =**= heading under the appropriate category in
+=feeds.org=, then =G= in elfeed to fetch.
+
+* Theme and Appearance
+
+** Light/Dark Toggle
+
+=C-c t= toggles between =modus-operandi= (light) and =modus-vivendi= (dark).
+Starts in light mode.
+
+** Visual Aids
+
+- *which-key* — after pressing a prefix key (e.g. =C-c=, =C-x=), pause
+  briefly and a popup shows all available continuations.
+- *rainbow-delimiters* — nested parentheses/brackets get distinct colors in
+  programming modes.
+- *show-paren-mode* — expression highlighting style: the entire expression
+  between matching parens is highlighted, not just the parens themselves.
+  No delay (=show-paren-delay= is 0).
+- *hl-line-mode* — current line is highlighted globally.
+- *column-number-mode* — column number shown in the mode line.
+
+* Language Reference Table
+
+| Language   | Major Mode      | LSP Server          | Formatter     |
+|------------+-----------------+---------------------+---------------|
+| C          | c-ts-mode       | clangd              | clang-format  |
+| C++        | c++-ts-mode     | clangd              | clang-format  |
+| Rust       | rustic/rust-ts   | rust-analyzer       | rustfmt       |
+| Zig        | zig-mode        | zls                 | zig fmt       |
+| Python     | python-ts-mode  | pyright             | black         |
+| Go         | go-ts-mode      | gopls               | gofmt         |
+| Protobuf   | protobuf-mode   | —                   | —             |
+| CMake      | cmake-mode      | —                   | —             |
+| Dockerfile | dockerfile-mode | —                   | —             |
+| YAML       | yaml-mode       | —                   | —             |
+| Markdown   | gfm-mode        | —                   | —             |
+| LLVM IR    | llvm-mode       | —                   | —             |
+| MLIR       | mlir-mode       | —                   | —             |
+
+** Notes
+
+- *C/C++ indentation* is 4 spaces (=c-ts-mode-indent-offset=).
+- *=.h= files* open in =c++-ts-mode= (not C mode).
+- *Markdown preview*: =M-x markdown-preview-mode= renders with pandoc and
+  GitHub CSS in a browser.
+- *Tree-sitter grammars* are installed automatically by =treesit-auto=.
+- *Rustic* uses eglot as its LSP client (=rustic-lsp-client 'eglot=).
+
+* Editor Defaults
+
+| Setting                    | Value / Effect                          |
+|----------------------------+-----------------------------------------|
+| Tabs                       | Never (=indent-tabs-mode nil=)          |
+| Trailing whitespace        | Deleted on save                         |
+| Auto-revert               | Enabled (files reload when changed)     |
+| Delete-selection           | Enabled (typing replaces selection)     |
+| Yes/No prompts             | Short form (=y= / =n=)                 |
+| Startup screen             | Disabled                                |
+| Bell                       | Silenced                                |
+| Paren matching             | Expression style, no delay              |
+| GC threshold               | 50MB during init, 8MB after             |
+| Native comp warnings       | Silent                                  |
+| Menu bar                   | Disabled                                |
+
+** Dired
+
+=C-x C-j= (from =dired-x=) opens dired in the directory of the current file.
+
+** Eshell
+
+Visual commands (=ssh=, =less=, =git=) run in a proper terminal buffer.
+Eshell buffers are destroyed when the process exits.
+
+** Tramp
+
+Remote PATH is inherited (=tramp-own-remote-path=), so remote commands find
+tools installed in non-standard locations.
+
+** Dabbrev
+
+Case-insensitive search (=dabbrev-case-fold-search t=), preserves the case of
+what you typed (=dabbrev-case-replace nil=).
+
+* Customizing This Configuration
+
+** Open init.el
+
+=C-c I= opens =~/.emacs.d/init.el= in another window.
+
+** Adding a Language
+
+1. Install a =use-package= for the major mode (if not built-in).
+2. Add an =eglot-ensure= hook for the new mode in the =eglot= config.
+3. Add the server program to =eglot-server-programs= if needed.
+4. Apheleia picks up most formatters automatically; check =apheleia-formatters=
+   if yours isn't detected.
+
+** Adding an RSS Feed
+
+1. Open =~/.emacs.d/feeds.org=.
+2. Add the feed URL as a =**= heading under the right category.
+3. The org tag on the parent heading becomes the elfeed tag.
+4. =G= in elfeed to fetch.
+
+** After Making Changes
+
+=M-x eval-buffer= in init.el to reload, or restart Emacs. For individual
+forms, select and =M-x eval-region=.
