@@ -1,51 +1,30 @@
 #+TITLE: Emacs Configuration Guide
 #+STARTUP: overview
 
-* Quick Reference — Keybinding Table
+* Quick Reference — Keybinding Cheat Sheet
 
-Custom bindings from init.el and critical package defaults.
+The bindings worth memorising. Details live in the dedicated sections below.
 
-** Custom Bindings
-
-| Key       | Command                | Context       |
-|-----------+------------------------+---------------|
-| =C-s=     | consult-line           | Search buffer |
-| =C-x b=   | consult-buffer         | Switch buffer |
-| =C-c k=   | consult-ripgrep        | Search files  |
-| =C-c g=   | consult-git-grep       | Search git    |
-| =C-c j=   | consult-git-grep       | Search git    |
-| =M-g g=   | consult-goto-line      | Go to line    |
-| =C-.=     | embark-act             | Context menu  |
-| =C-;=     | embark-dwim            | Default action|
-| =C-h B=   | embark-bindings        | Show bindings |
-| =C-c p=   | project prefix map     | Project       |
-| =C-c c=   | avy-goto-char-timer    | Jump to char  |
-| =C-c s=   | avy-goto-line          | Jump to line  |
-| =C-c f=   | apheleia-format-buffer | Format code   |
-| =C-x g=   | magit-status           | Git status    |
-| =C-c e=   | elfeed                 | RSS reader    |
-| =C-c t=   | modus-themes-toggle    | Toggle theme  |
-| =C-c I=   | find-user-init-file    | Open init.el  |
-| =S-arrows= | windmove              | Switch window |
-
-** Eglot Bindings (active in LSP buffers)
-
-| Key       | Command              |
-|-----------+----------------------|
-| =M-.=     | xref-find-definitions|
-| =M-?=     | xref-find-references |
-| =M-,=     | xref-go-back         |
-| =C-M-.=   | xref-find-apropos    |
-| =C-c C-r= | eglot-rename         |
-| =C-c C-a= | eglot-code-actions   |
-
-** Flymake Bindings (active when flymake is on)
-
-| Key       | Command                         |
-|-----------+---------------------------------|
-| =C-c ! n= | flymake-goto-next-error         |
-| =C-c ! p= | flymake-goto-prev-error         |
-| =C-c ! l= | flymake-show-buffer-diagnostics |
+| Key           | Action                   |
+|---------------+--------------------------|
+| =C-s=         | Search buffer            |
+| =C-c k=       | Search files (ripgrep)   |
+| =C-x b=       | Switch buffer            |
+| =C-c p f=     | Find file in project     |
+| =C-c p p=     | Switch project           |
+| =M-.=         | Jump to definition       |
+| =M-?=         | Find references          |
+| =M-,=         | Jump back                |
+| =C-c C-r=     | Rename symbol            |
+| =C-c C-a=     | Code actions             |
+| =C-c ! n/p=   | Next/prev diagnostic     |
+| =C-.=         | Embark — context actions |
+| =C-c c=       | Jump to char (avy)       |
+| =S-arrows=    | Switch window            |
+| =C-x g=       | Git status (magit)       |
+| =C-c f=       | Format buffer            |
+| =C-c t=       | Toggle light/dark theme  |
+| =C-c I=       | Open init.el             |
 
 * Searching and Finding Things
 
@@ -77,7 +56,7 @@ still expands to =~/.emacs.d/=).
 4. Make your edits (regular editing, query-replace, etc.).
 5. Press =C-c C-e= to apply changes. With =wgrep-auto-save-buffer= set to =t=, files save automatically.
 
-** Keyboard Macros (Repeat an Edit on Every Line)
+*** Keyboard Macros (Repeat an Edit on Every Line)
 
 | Key             | Action                                          |
 |-----------------+-------------------------------------------------|
@@ -86,7 +65,7 @@ still expands to =~/.emacs.d/=).
 | =C-x e=         | Play back last macro (then =e= to repeat)       |
 | =C-u 0 C-x e=   | Repeat macro until error (e.g. end of buffer)   |
 
-*** Record-then-apply workflow
+**** Record-then-apply workflow
 
 1. Move point to the first line you want to edit.
 2. =C-x (= — start recording.
@@ -97,7 +76,7 @@ still expands to =~/.emacs.d/=).
    - =C-u 20 C-x e= — repeat exactly 20 times.
    - Select a region, then =C-x C-k r= (=apply-macro-to-region-lines=) — runs the macro once on every line in the region.
 
-*** Tips
+**** Tips
 
 - If the macro needs to work reliably on every line, start each iteration at the
   beginning of a line (=C-a=) and end by moving to the next line. This keeps
