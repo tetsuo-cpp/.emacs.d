@@ -77,6 +77,36 @@ still expands to =~/.emacs.d/=).
 4. Make your edits (regular editing, query-replace, etc.).
 5. Press =C-c C-e= to apply changes. With =wgrep-auto-save-buffer= set to =t=, files save automatically.
 
+** Keyboard Macros (Repeat an Edit on Every Line)
+
+| Key             | Action                                          |
+|-----------------+-------------------------------------------------|
+| =C-x (=         | Start recording macro                           |
+| =C-x )=         | Stop recording                                  |
+| =C-x e=         | Play back last macro (then =e= to repeat)       |
+| =C-u 0 C-x e=   | Repeat macro until error (e.g. end of buffer)   |
+
+*** Record-then-apply workflow
+
+1. Move point to the first line you want to edit.
+2. =C-x (= — start recording.
+3. Perform your edit on that line, then move to the next line (=C-a C-n= or =C-e C-n= etc.).
+4. =C-x )= — stop recording.
+5. Apply to remaining lines:
+   - =C-u 0 C-x e= — repeat until an error (usually end-of-buffer), good when you want to run through the rest of the buffer.
+   - =C-u 20 C-x e= — repeat exactly 20 times.
+   - Select a region, then =C-x C-k r= (=apply-macro-to-region-lines=) — runs the macro once on every line in the region.
+
+*** Tips
+
+- If the macro needs to work reliably on every line, start each iteration at the
+  beginning of a line (=C-a=) and end by moving to the next line. This keeps
+  point in a predictable position.
+- =C-x C-k n= — give the last macro a name so you can call it later with =M-x=.
+- =C-x C-k e= — edit the last macro interactively (=kmacro-edit-macro=).
+- Combine with =wgrep=: export search results, enter wgrep mode, then run a
+  macro across the editable lines.
+
 ** Go to Line
 
 =M-g g= / =M-g M-g= — =consult-goto-line= with live preview.
