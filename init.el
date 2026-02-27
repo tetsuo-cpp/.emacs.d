@@ -242,7 +242,7 @@
 (use-package modus-themes
   :ensure nil
   :bind ("C-c t" . modus-themes-toggle)
-  :config (load-theme 'modus-operandi t))
+  :init (load-theme 'modus-operandi t))
 
 ;; Rainbow parentheses in programming modes.
 (use-package rainbow-delimiters
