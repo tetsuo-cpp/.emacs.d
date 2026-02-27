@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: enum
-# key: enum
-# --
-typedef enum {
-    $0
-} ${1:NAME};

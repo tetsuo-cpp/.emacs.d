@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: dynamic_cast
-# key: dc
-# --
-dynamic_cast<${1:Type}>(${2:msg})

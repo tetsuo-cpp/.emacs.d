@@ -1,0 +1,112 @@
+#+TITLE: Elfeed Feeds
+
+* Compilers & Programming Languages                               :compilers:
+** https://blog.llvm.org/index.xml
+** https://blogs.igalia.com/compilers/feed/feed.xml
+** https://chandlerc.blog/index.xml
+** https://weliveindetail.github.io/blog/feed.xml
+** https://maskray.me/blog/atom.xml
+** https://blog.regehr.org/feed
+** https://makslevental.github.io/feed.xml
+** https://www.lei.chat/posts/index.xml
+** https://farena.in/feed.xml
+** https://pappasbrent.com/feed.xml
+** https://www.mgaudet.ca/technical?format=rss
+** https://www.mgaudet.ca/blog?format=rss
+** https://eli.thegreenplace.net/feeds/all.atom.xml
+** https://pointersgonewild.com/feed/
+** https://matklad.github.io/feed.xml
+** https://wingolog.org/feed/atom
+** https://tetsuo.sh/atom.xml
+** https://journal.stuffwithstuff.com/atom.xml
+** https://ericlippert.com/feed/
+** https://bernsteinbear.com/feed.xml
+** https://blog.sigplan.org/feed/
+** https://www.douggregor.net/feed.rss
+** https://briancallahan.net/blog/feed.xml
+** https://kyju.org/blog/atom.xml
+** https://www.scattered-thoughts.net/atom.xml
+** https://borretti.me/feed.xml
+** https://herecomesthemoon.net/posts/index.xml
+** https://marcelgarus.dev/rss
+** https://andreyor.st/feed.xml
+** https://blog.kevmod.com/feed/
+** https://research.swtch.com/feed.atom
+** https://andrewkelley.me/rss.xml
+
+* Systems & Performance                                           :systems:
+** https://danluu.com/atom.xml
+** https://rachelbythebay.com/w/atom.xml
+** https://www.brendangregg.com/blog/rss.xml
+** https://bcantrill.dtrace.org/feed/
+** https://nullprogram.com/feed/
+** https://ridiculousfish.com/blog/atom.xml
+** https://fabiensanglard.net/rss.xml
+** https://randomascii.wordpress.com/feed/
+** https://lemire.me/blog/feed/
+** https://mcyoung.xyz/atom.xml
+** https://jvns.ca/atom.xml
+** https://despairlabs.com/blog/index.xml
+** https://daniel.haxx.se/blog/feed/
+** https://fasterthanli.me/index.xml
+** https://xol.io/blah/index.xml
+** https://blog.jessfraz.com/index.xml
+
+* Security                                                        :security:
+** https://blog.trailofbits.com/feed/
+** https://googleprojectzero.blogspot.com/feeds/posts/default
+** https://blog.yossarian.net/feed.xml
+** https://kentosec.com/feed/
+** https://mahaloz.re/feed.xml
+** https://binary.ninja/feed.xml
+** https://crnkovic.dev/rss/
+** https://sethmlarson.dev/feed
+** https://nickselby.com/docs/index.xml
+
+* Databases & Distributed Systems                                 :databases:
+** https://aphyr.com/posts.atom
+** https://jack-vanlightly.com/?format=rss
+** https://smalldatum.blogspot.com/feeds/posts/default
+** https://notes.eatonphil.com/rss.xml
+** https://dr-knz.net/feeds/all.rss.xml
+** http://antirez.com/rss
+
+* Software Engineering                                            :software:
+** https://kevin.burke.dev/feed/
+** https://drewdevault.com/blog/index.xml
+** https://steveklabnik.com/feed.xml
+** https://shape-of-code.com/feed/
+** https://zserge.com/rss.xml
+** https://xeiaso.net/blog.rss
+** https://neugierig.org/software/blog/atom.xml
+** https://izzys.casa/index.xml
+** https://jesseduffield.com/feed.xml
+** https://austinhenley.com/blog/feed.rss
+** https://charity.wtf/feed/
+
+* Math & CS                                                       :math:
+** https://blog.acolyer.org/feed/
+** https://jeremykun.com/feed/
+** https://matt.might.net/articles/feed.rss
+** https://www.nayuki.io/rss20.xml
+** https://writings.stephenwolfram.com/feed/
+
+* Emacs                                                           :emacs:
+** https://sachachua.com/blog/feed/atom/
+** https://karthinks.com/index.xml
+
+* Tech Culture & Industry                                         :culture:
+** https://lukesmith.xyz/index.xml
+** https://mtlynch.io/index.xml
+** https://ludic.mataroa.blog/rss/
+** https://oscarhong.net/feed/
+** https://irrationalanalysis.substack.com/feed
+
+* Misc                                                            :misc:
+** https://100r.co/links/rss.xml
+** https://zmatt.net/feed/
+** https://thesiswhisperer.com/feed/
+** https://www.jeffgeerling.com/blog.xml
+** https://goold.au/rss/
+** https://ai-andy-gill.hashnode.dev/rss.xml
+** https://harper.blog/index.xml

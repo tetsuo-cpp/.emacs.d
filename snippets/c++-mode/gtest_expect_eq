@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: gtest_expect_eq
-# key: ee
-# --
-EXPECT_EQ(${1:rhs}, ${2:lhs});

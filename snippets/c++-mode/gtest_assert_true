@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: gtest_assert_true
-# key: at
-# --
-ASSERT_TRUE(${1:condition});

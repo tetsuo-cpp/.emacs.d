@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: for_range
-# key: forr
-# --
-for (${1:const }${2:auto}${3:&} ${4:elem} : ${5:container})
-{
-    $0
-}

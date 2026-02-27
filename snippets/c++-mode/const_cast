@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: const_cast
-# key: cc
-# --
-const_cast<${1:Type}>(${2:msg})

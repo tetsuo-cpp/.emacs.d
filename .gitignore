@@ -1,1 +1,10 @@
-.emacs.d/secrets.el
+elpa/
+eln-cache/
+auto-save-list/
+eshell/
+transient/
+recentf
+tramp
+abbrev_defs
+*~
+*.elc
