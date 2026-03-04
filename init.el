@@ -120,6 +120,7 @@
 
 ;; Automatic tree-sitter grammar installation and mode remapping.
 (use-package treesit-auto
+  :disabled
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
@@ -151,6 +152,7 @@
 ;;;; Languages — C/C++
 
 (use-package c-ts-mode
+  :disabled
   :ensure nil
   :hook (c-ts-mode . my/c-setup)
   :preface
@@ -158,6 +160,7 @@
     (setq c-ts-mode-indent-offset 4)))
 
 (use-package c++-ts-mode
+  :disabled
   :ensure nil
   :mode "\\.h\\'"
   :hook (c++-ts-mode . my/cpp-setup)
