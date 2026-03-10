@@ -16,6 +16,7 @@
 
 ;; Inherit shell PATH on macOS (terminal Emacs launched from GUI may miss it).
 (use-package exec-path-from-shell
+  :disabled
   :if (eq system-type 'darwin)
   :config
   (exec-path-from-shell-initialize))
@@ -24,6 +25,7 @@
 
 ;; Vertical completion UI.
 (use-package vertico
+  :ensure t
   :init (vertico-mode))
 
 ;; Flexible matching (space-separated components match in any order).
