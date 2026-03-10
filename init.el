@@ -253,9 +253,8 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; Show available keybinding continuations (built-in in Emacs 30).
+;; Show available keybinding continuations.
 (use-package which-key
-  :ensure nil
   :config (which-key-mode))
 
 ;;;; Miscellaneous settings
