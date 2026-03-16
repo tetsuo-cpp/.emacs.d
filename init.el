@@ -226,7 +226,12 @@
 ;;;; Git
 
 (use-package magit
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :init
+  (autoload 'magit-project-status "magit-extras" nil t)
+  (with-eval-after-load 'project
+    (keymap-set project-prefix-map "m" #'magit-project-status)
+    (add-to-list 'project-switch-commands '(magit-project-status "Magit") t)))
 
 ;;;; RSS (elfeed)
 
