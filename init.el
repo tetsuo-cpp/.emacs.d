@@ -85,7 +85,9 @@
 ;; Built-in project management.
 (use-package project
   :ensure nil
-  :bind-keymap ("C-c p" . project-prefix-map))
+  :bind-keymap ("C-c p" . project-prefix-map)
+  :config
+  (keymap-set project-prefix-map "a" #'ff-find-other-file))
 
 ;; Jump to visible text quickly.
 (use-package avy

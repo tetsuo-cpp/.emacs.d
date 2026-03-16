@@ -95,6 +95,7 @@ still expands to =~/.emacs.d/=).
 | Key       | Command                         | Description            |
 |-----------+---------------------------------+------------------------|
 | =C-c p f= | project-find-file               | Find file in project   |
+| =C-c p a= | ff-find-other-file              | Switch header/source   |
 | =C-c p g= | project-find-regexp             | Grep in project        |
 | =C-c p d= | project-find-dir                | Find directory         |
 | =C-c p D= | project-dired                   | Dired at project root  |
