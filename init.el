@@ -87,7 +87,10 @@
   :ensure nil
   :bind-keymap ("C-c p" . project-prefix-map)
   :config
-  (keymap-set project-prefix-map "a" #'ff-find-other-file))
+  (keymap-set project-prefix-map "a" #'ff-find-other-file)
+  ;; Add ripgrep to the project-switch menu (C-c p p k) rather
+  ;; than binding C-c p k directly, to avoid trampling existing bindings.
+  (add-to-list 'project-switch-commands '(consult-ripgrep "Ripgrep" ?k) t))
 
 ;; Jump to visible text quickly.
 (use-package avy
